@@ -1,0 +1,60 @@
+name: Binance Futures Scanner (Riyadh Schedule)
+
+on:
+  schedule:
+    - cron: '45 23 * * *'
+    - cron: '5 0 * * *'
+    - cron: '5 8 * * *'
+    - cron: '5 12 * * *'
+    - cron: '5 16 * * *'
+    - cron: '5 20 * * *'
+
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'نوع التشغيل اليدوي'
+        required: true
+        default: 'scan'
+        type: choice
+        options:
+          - scan
+          - confirm
+
+permissions:
+  contents: write
+
+concurrency:
+  group: binance-scanner
+  cancel-in-progress: false
+
+jobs:
+  run-scanner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Binance Futures Engine
+        env:
+          TZ: Asia/Riyadh
+          SCAN_MODE: ${{ github.event.inputs.mode || 'auto' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 cloud_entry.py
+
+      - name: Save updated report & state
+        run: |
+          git config user.name "Binance-Scanner-Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add index.html *.json history/*.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "تحديث التقرير الآلي $(TZ=Asia/Riyadh date '+%Y-%m-%d %H:%M')"
+            git pull --rebase -X theirs origin main || true
+            git push origin HEAD:main
+          fi
