@@ -1,0 +1,21 @@
+{
+  "name": "ماسح عقود بايننس الآجلة v3.4",
+  "short_name": "ماسح بايننس",
+  "description": "مسح عقود بايننس الآجلة ومناطق اصطياد الذيل الآسيوي والعملات القابلة للانفجار",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#080c12",
+  "theme_color": "#080c12",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
