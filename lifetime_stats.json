@@ -1,8 +1,37 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 0,
-  "losses": 0,
-  "net_r": 0.0,
-  "counted": {},
-  "updated_at": "2026-11-09 21:30"
+  "losses": 4,
+  "net_r": -4.0,
+  "counted": {
+    "GRASSUSDT|SHORT|1794244025015": {
+      "sym": "GRASSUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794257632639
+    },
+    "JUPUSDT|SHORT|1794244025015": {
+      "sym": "JUPUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794257632639
+    },
+    "MONUSDT|SHORT|1794249040152": {
+      "sym": "MONUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794257632639
+    },
+    "FARTCOINUSDT|SHORT|1794249040152": {
+      "sym": "FARTCOINUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794257632639
+    }
+  },
+  "updated_at": "2026-11-09 23:53"
 }
