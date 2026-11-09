@@ -49,15 +49,19 @@ def track(trades, since_ms, max_dist_atr=1.0, fresh=True):
         side = t["side"]
         e_lo, e_hi = t["entry_lo"], t["entry_hi"]
         stop, tp1, tp2, tp3 = t["stop"], t["targets"][0], t["targets"][1], t["targets"][2]
-        filled_at = None
+        prev_filled = bool(t.get("filled")) and (t.get("filled_at") is not None)
+        filled_at = int(t["filled_at"]) if prev_filled else None
+        prev_fill_px = float(t["fill_price"]) if (prev_filled and t.get("fill_price") is not None) else None
         exit_ts = None
         res = None
-        hi = max((b[1] for b in bars), default=None)
-        lo = min((b[2] for b in bars), default=None)
-        hi_after = None
-        lo_after = None
+        hi = max((b[1] for b in bars), default=t.get("hi_since"))
+        lo = min((b[2] for b in bars), default=t.get("lo_since"))
+        hi_after = t.get("hi_after") if prev_filled else None
+        lo_after = t.get("lo_after") if prev_filled else None
 
         for tt, h, l, _c in bars:
+            if prev_filled and tt < filled_at:
+                continue
             just_filled = False
             if filled_at is None:
                 if (side == "LONG" and l <= e_hi) or (side == "SHORT" and h >= e_lo):
@@ -65,6 +69,8 @@ def track(trades, since_ms, max_dist_atr=1.0, fresh=True):
                     just_filled = True
                     hi_after = h
                     lo_after = l
+            elif prev_filled and tt == filled_at:
+                just_filled = True
             if filled_at is not None:
                 hi_after = max(hi_after, h) if hi_after is not None else h
                 lo_after = min(lo_after, l) if lo_after is not None else l
@@ -123,13 +129,17 @@ def track(trades, since_ms, max_dist_atr=1.0, fresh=True):
         t2["exit_ts"] = exit_ts
         t2["hi_since"] = hi
         t2["lo_since"] = lo
+        t2["hi_after"] = hi_after
+        t2["lo_after"] = lo_after
         t2["last"] = last
 
         if filled_at is not None:
             if side == "LONG":
-                fill_price = (e_hi + max(e_lo, lo_after if lo_after is not None else e_hi)) / 2.0
+                calc_fp = (e_hi + max(e_lo, lo_after if lo_after is not None else e_hi)) / 2.0
+                fill_price = min(prev_fill_px, calc_fp) if prev_fill_px is not None else calc_fp
             else:
-                fill_price = (e_lo + min(e_hi, hi_after if hi_after is not None else e_lo)) / 2.0
+                calc_fp = (e_lo + min(e_hi, hi_after if hi_after is not None else e_lo)) / 2.0
+                fill_price = max(prev_fill_px, calc_fp) if prev_fill_px is not None else calc_fp
             t2["fill_price"] = fill_price
 
             if res is not None:

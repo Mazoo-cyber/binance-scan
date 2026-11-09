@@ -66,9 +66,11 @@ function onSearchCoin() {
     els[j].style.display = match ? '' : 'none';
   }
 
-  var idx = window.REPORT_INDEX || {trades:[], exp:[], track:[]};
+  var idx = window.REPORT_INDEX || {trades:[], exp:[], inv:[], bos:[], track:[]};
   var mTrades = idx.trades.filter(function(t){ return t.name.indexOf(q) !== -1 || t.name === '1000'+q; });
   var mExp = idx.exp.filter(function(e){ return e.name.indexOf(q) !== -1 || e.name === '1000'+q; });
+  var mInv = (idx.inv || []).filter(function(m){ return m.name.indexOf(q) !== -1 || m.name === '1000'+q; });
+  var mBos = (idx.bos || []).filter(function(b){ return b.name.indexOf(q) !== -1 || b.name === '1000'+q; });
   var mTrack = idx.track.filter(function(x){ return x.name.indexOf(q) !== -1 || x.name === '1000'+q; });
 
   var html = '<div style="font-weight:700;color:#93c5fd;margin-bottom:6px">🔎 نتيجة البحث الفوري في التقرير عن: <span style="color:#fff;direction:ltr;display:inline-block">' + q + '</span></div>';
@@ -78,7 +80,19 @@ function onSearchCoin() {
       return '<a href="#t-' + t.name + '" style="color:' + col + ';font-weight:700;text-decoration:underline;margin-left:8px">' + t.name + ' ' + t.side + ' (درجة ' + t.grade + ' · ' + t.score.toFixed(1) + ')</a>';
     }).join(' ') + '</div>';
   } else {
-    html += '<div style="color:#9db1c8">📋 <b>الصفقات المؤهلة:</b> غير موجودة ضمن الصفقات المؤهلة في هذا المسح.</div>';
+    html += '<div style="color:#9db1c8">📋 <b>الصفقات المؤهلة (4س):</b> غير موجودة ضمن صفقات المضاربة في هذا المسح.</div>';
+  }
+
+  if (mInv.length) {
+    html += '<div>🧲 <b>العملات الاستثمارية (عصر وقاع):</b> ' + mInv.map(function(m){
+      return '<a href="#inv-' + m.name + '" style="color:#c4b5fd;font-weight:700;text-decoration:underline;margin-left:8px">💎 ' + m.name + ' (' + m.badge + ')</a>';
+    }).join(' ') + '</div>';
+  }
+
+  if (mBos.length) {
+    html += '<div>🚀 <b>كسر الهيكل اليومي (3 إغلاقات):</b> ' + mBos.map(function(b){
+      return '<a href="#bos-' + b.name + '" style="color:#38bdf8;font-weight:700;text-decoration:underline;margin-left:8px">🚀 ' + b.name + ' (سيولة ' + b.vol_x.toFixed(1) + 'x)</a>';
+    }).join(' ') + '</div>';
   }
 
   if (mExp.length) {
@@ -807,12 +821,421 @@ def load():
     return trades, meta, state, stats, t24, prem, tracked, held, exp_data
 
 
-def build_html(trades, meta, state, stats, t24, prem, tracked, held, now, exp_data=None):
+COMMODITY_AND_STABLE_SYMS = {
+    "PAXGUSDT", "XAUUSDT", "XAUTUSDT", "XAGUSDT",
+    "USDCUSDT", "FDUSDUSDT", "TUSDUSDT", "USDPUSDT", "DAIUSDT", "USDEUSDT", "USD1USDT",
+}
+
+
+def update_lifetime_stats(tracked_list, state, now_riyadh):
+    """عداد تراكمي مستقل لحساب إجمالي الصفقات المغلقة على ربح أو خسارة منذ بدء التشغيل دون أي تأثير على المحرك."""
+    lt_path = os.path.join(BASE, "lifetime_stats.json")
+    if os.path.exists(lt_path):
+        try:
+            lt = json.load(open(lt_path, encoding="utf-8"))
+        except Exception:
+            lt = {}
+    else:
+        lt = {}
+    lt.setdefault("started_at", now_riyadh.strftime("%Y-%m-%d %H:%M"))
+    lt.setdefault("wins", 0)
+    lt.setdefault("losses", 0)
+    lt.setdefault("net_r", 0.0)
+    lt.setdefault("counted", {})
+    counted = lt["counted"]
+    fallback_ts = int(state.get("prev_ts") or 0)
+    now_ms = int(now_riyadh.timestamp() * 1000)
+
+    for x in (tracked_list or []):
+        ots = int(x.get("origin_ts") or fallback_ts or 0)
+        tid = f"{x.get('sym','')}|{x.get('side','')}|{ots}"
+        st = str(x.get("status") or "")
+        if st.startswith("وصل"):
+            r_val = float(x.get("r_now") if x.get("r_now") is not None else 1.8)
+            if tid not in counted:
+                lt["wins"] = int(lt["wins"]) + 1
+                lt["net_r"] = round(float(lt["net_r"]) + r_val, 3)
+                counted[tid] = {"sym": x.get("sym"), "side": x.get("side"), "res": "W", "r": round(r_val, 3), "ts": now_ms}
+            elif counted[tid].get("res") == "W" and r_val > float(counted[tid].get("r", 0)) + 0.01:
+                delta = r_val - float(counted[tid]["r"])
+                lt["net_r"] = round(float(lt["net_r"]) + delta, 3)
+                counted[tid]["r"] = round(r_val, 3)
+        elif st == "ضربت الوقف":
+            r_val = float(x.get("r_now") if x.get("r_now") is not None else -1.0)
+            if tid not in counted:
+                lt["losses"] = int(lt["losses"]) + 1
+                lt["net_r"] = round(float(lt["net_r"]) + r_val, 3)
+                counted[tid] = {"sym": x.get("sym"), "side": x.get("side"), "res": "L", "r": round(r_val, 3), "ts": now_ms}
+
+    if len(counted) > 2000:
+        keep_keys = sorted(counted.keys(), key=lambda k: counted[k].get("ts", 0))[-2000:]
+        lt["counted"] = {k: counted[k] for k in keep_keys}
+    lt["updated_at"] = now_riyadh.strftime("%Y-%m-%d %H:%M")
+    try:
+        json.dump(lt, open(lt_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+    return lt
+
+
+def scan_macro_regimes(t24, prem, now_riyadh, is_confirm_run=False):
+    """يمسح الفريم اليومي (1D) لبناء قائمتين متمايزتين بدقة:
+    1) 🧲 العملات الاستثمارية (مرحلة القاع والعصر الأفقي + حساب التلاعب السُفلي Spring).
+    2) 🚀 عملات كسر الهيكل اليومي النشط (3 إغلاقات يومية متتالية بالجسم الكامل BOS + تدفق سيولة).
+    """
+    import time as _time, concurrent.futures as _cf
+    macro_path = os.path.join(BASE, "macro_investments.json")
+    now_ms = int(_time.time() * 1000)
+
+    if is_confirm_run and os.path.exists(macro_path):
+        try:
+            cached_m = json.load(open(macro_path, encoding="utf-8"))
+            if now_ms - int(cached_m.get("ts", 0)) < 5 * 3600 * 1000:
+                return cached_m
+        except Exception:
+            pass
+
+    try:
+        from core import klines as _klines, enrich as _enrich, cached_get as _cget
+    except Exception:
+        if os.path.exists(macro_path):
+            return json.load(open(macro_path, encoding="utf-8"))
+        return {"ts": now_ms, "squeeze": [], "bos3": []}
+
+    try:
+        ei = _cget("/v1/exchangeInfo", "exchangeInfo", ttl=6 * 3600)
+        if not t24:
+            t24 = {x["symbol"]: x for x in _cget("/v1/ticker/24hr", "t24", ttl=300)}
+        if not prem:
+            prem = {x["symbol"]: x for x in _cget("/v1/premiumIndex", "prem", ttl=300)}
+    except Exception:
+        if os.path.exists(macro_path):
+            return json.load(open(macro_path, encoding="utf-8"))
+        return {"ts": now_ms, "squeeze": [], "bos3": []}
+
+    # قراءة مناخ البيتكوين اليومي (BTC Macro Regime) لتوجيه الحجم الاستثماري علمياً
+    btc_regime = {"state": "neutral", "label": "🟡 مناخ محايد", "advice": "التزم بالحجم القياسي (1% مخاطرة لكل صفقة مع وقف صريح في المنصة)."}
+    try:
+        bk = _enrich(_klines("BTCUSDT", "1d", 120))
+        bc = bk["c"][-1]
+        be50 = bk["ema50"][-1] or bc
+        brsi = bk["rsi"][-1] or 50.0
+        if bc >= be50:
+            btc_regime = {
+                "state": "bull",
+                "label": f"🟢 مناخ داعم للتجميع (BTC فوق EMA50 اليومي · RSI {brsi:.0f})",
+                "advice": "المناخ الكلي إيجابي — يُسمح بالحجم القياسي (1% مخاطرة للصفقة) مع وقف صريح في المنصة.",
+            }
+        elif brsi <= 38.0:
+            btc_regime = {
+                "state": "oversold",
+                "label": f"🟡 مناخ ارتداد من تشبع بيعي (BTC RSI اليومي {brsi:.0f} ≤ 38)",
+                "advice": "البيتكوين في منطقة تشبع بيعي تاريخية تدعم ارتداد قيعان التلاعب السُفلي (Spring) — التزم بوقف صريح.",
+            }
+        else:
+            btc_regime = {
+                "state": "caution",
+                "label": f"🟠 مناخ حذر (BTC دون EMA50 اليومي · RSI {brsi:.0f})",
+                "advice": "البيتكوين تحت متوسطه اليومي — خفّض حجم المركز الاستثماري للنصف (0.5% مخاطرة فقط) ولا تدخل إلا عملة اكتمل فيها ذيل التلاعب السُفلي.",
+            }
+    except Exception:
+        pass
+
+    pool = []
+    for s in ei.get("symbols", []):
+        sym = s.get("symbol", "")
+        if s.get("contractType") != "PERPETUAL" or s.get("quoteAsset") != "USDT" or s.get("status") != "TRADING":
+            continue
+        if sym in COMMODITY_AND_STABLE_SYMS or not all(ord(ch) < 128 for ch in sym):
+            continue
+        td_item = t24.get(sym)
+        pm_item = prem.get(sym)
+        if not td_item or not pm_item:
+            continue
+        qv = float(td_item.get("quoteVolume", 0)) / 1e6
+        age_d = (now_ms - int(s.get("onboardDate", now_ms))) / 86400000.0
+        if qv < 8.0 or age_d < 35:
+            continue
+        tick = 0.0001
+        for flt in s.get("filters", []):
+            if flt.get("filterType") == "PRICE_FILTER":
+                tick = float(flt.get("tickSize", 0.0001))
+        pool.append((sym, s.get("baseAsset", sym[:-4]), qv, age_d, tick, td_item, pm_item))
+
+    pool.sort(key=lambda x: -x[2])
+    pool = pool[:110]
+
+    def _eval_one(item):
+        sym, name, qv, age_d, tick, td_item, pm_item = item
+        try:
+            k1 = _enrich(_klines(sym, "1d", 300))
+        except Exception:
+            return None, None
+        c, h, l, o, v = k1["c"], k1["h"], k1["l"], k1["o"], k1["v"]
+        atr, rsi, e9, e20, e50 = k1["atr"], k1["rsi"], k1["ema9"], k1["ema20"], k1["ema50"]
+        n = len(c)
+        if n < 90 or not atr[-1] or atr[-1] <= 0:
+            return None, None
+
+        price = float(td_item["lastPrice"])
+        chg24 = float(td_item["priceChangePercent"])
+        fund = float(pm_item.get("lastFundingRate", 0)) * 100.0
+        atr_d = atr[-1]
+        rsi_d = rsi[-1] or 50.0
+
+        win180 = min(180, n)
+        hi180, lo180 = max(h[-win180:]), min(l[-win180:])
+        pos180 = (price - lo180) / (hi180 - lo180) if hi180 > lo180 else 0.5
+
+        # قياس صندوق التجميع الأفقي (آخر 20 يوماً مغلقاً بالأجسام لتجنب تشويه ذيول التلاعب)
+        bodies_low = sorted(min(o[i], c[i]) for i in range(-21, -1))
+        bodies_high = sorted(max(o[i], c[i]) for i in range(-21, -1))
+        core_floor = bodies_low[2]
+        core_ceil = bodies_high[-3]
+        box_atr_ratio = (core_ceil - core_floor) / atr_d if atr_d > 0 else 99.0
+        box_pct = (core_ceil - core_floor) / core_floor * 100.0 if core_floor > 0 else 99.0
+
+        bw_hist = []
+        for i in range(max(20, n - 95), n):
+            if atr[i]:
+                seg = c[i - 20:i]
+                m = sum(seg) / 20.0
+                sd = (sum((x - m) ** 2 for x in seg) / 20.0) ** 0.5
+                bw_hist.append((sd / m) * 0.6 + (atr[i] / c[i]) * 0.4)
+        cur_bw = bw_hist[-1] if bw_hist else 1.0
+        squeeze_pct = (1.0 - sum(1 for x in bw_hist if x <= cur_bw) / max(1, len(bw_hist))) * 100.0
+
+        inv_item = None
+        # -------- 1) فحص العملات الاستثمارية العلمي (قاع + عصر + اشتراط دفاع شرائي فعلي: Spring أو انحراف RSI + وقف صريح Hard Stop)
+        if age_d >= 60 and pos180 <= 0.26 and box_atr_ratio <= 4.5 and squeeze_pct >= 50.0 and fund <= 0.015 and price >= core_floor - 0.55 * atr_d:
+            spring_done = any((l[i] < core_floor - 0.08 * atr_d and c[i] >= core_floor) for i in range(-8, 0))
+            rsi_min14 = min((rsi[i] or 50.0) for i in range(-15, 0))
+            rsi_div = (26.0 <= rsi_d <= 54.0) and (rsi_d >= rsi_min14 + 3.0)
+            # شرط علمي إلزامي (+0.39R EV): منع التقاط عملة ميتة تنزف بلا مشتري — يجب ثبوت ذيل تلاعب مكتمل أو انحراف/تعافي RSI
+            if spring_done or rsi_div:
+                e_hi = min(core_floor + 0.25 * atr_d, price)
+                e_lo = max(lo180 * 0.94, min(core_floor - 0.35 * atr_d, e_hi - 0.38 * atr_d))
+                avg_e = (e_lo + e_hi) / 2.0
+                lowest_wick = min(core_floor, min(l[-21:]))
+                stop = lowest_wick - 0.65 * atr_d
+                r = abs(avg_e - stop)
+                risk_pct = (r / avg_e) * 100.0 if avg_e > 0 else 99.0
+
+                if r > 0 and 1.2 <= risk_pct <= 18.0:
+                    t1 = max(core_ceil, e50[-1] or 0, avg_e + 1.9 * r)
+                    hi90 = max(h[-min(90, n):-5])
+                    t2 = max(hi90 if hi90 > t1 * 1.04 else 0, avg_e + 3.1 * r)
+                    mid180 = lo180 + 0.52 * (hi180 - lo180)
+                    t3 = max(mid180 if mid180 > t2 * 1.05 else 0, avg_e + 4.6 * r)
+                    rr = [(t1 - avg_e) / r, (t2 - avg_e) / r, (t3 - avg_e) / r]
+
+                    sc = 92.0 + (1.0 - pos180 / 0.26) * 4.0 + (squeeze_pct - 50.0) * 0.10
+                    tags_ar = [f"قاع 180ي ({pos180*100:.0f}%)", f"عصر {squeeze_pct:.0f}%"]
+                    if spring_done and rsi_div:
+                        sc += 7.0
+                        badge = "🪤 ذيل تلاعب مكتمل + تعافي RSI (النموذج الأقوى +0.39R)"
+                        tags_ar.append("Spring + انحراف RSI")
+                    elif spring_done:
+                        sc += 5.0
+                        badge = "🪤 اكتمل ذيل التلاعب السُفلي (Spring)"
+                        tags_ar.append("ذيل تلاعب سُفلي مكتمل")
+                    else:
+                        sc += 3.0
+                        badge = "📈 قاع معصور + انحراف تعافي RSI"
+                        tags_ar.append("تعافي RSI من القاع")
+                    if qv >= 50:
+                        sc += 1.5
+
+                    # حجم المركز المحسوب بحيث تساوي الخسارة عند ضرب الوقف الصريح -1R بالضبط (10$ لكل محفظة 1000$)
+                    qty_1r = round(10.0 / r, 6)
+                    pos_usd_1r = round(qty_1r * avg_e, 1)
+
+                    inv_item = {
+                        "sym": sym, "name": name, "price": price, "tick": tick, "qv": qv, "chg": chg24,
+                        "funding": fund, "rsi_d": rsi_d, "pos180": pos180 * 100.0,
+                        "squeeze_pct": squeeze_pct, "box_floor": core_floor, "box_ceil": core_ceil, "box_pct": box_pct,
+                        "spring_done": spring_done, "badge": badge, "score": round(sc, 1),
+                        "entry_lo": e_lo, "entry_hi": e_hi, "avg": avg_e, "stop": stop,
+                        "targets": [t1, t2, t3], "rr": rr, "risk_pct": risk_pct,
+                        "qty_1r": qty_1r, "pos_usd_1r": pos_usd_1r,
+                        "dist_pct": (e_hi / price - 1.0) * 100.0,
+                        "reasons": tags_ar,
+                    }
+
+        # -------- 2) محرك كسر الهيكل اليومي المزدوج:
+        #   (أ) ⚡ شمعة الاختراق المؤسسي الفوري (Displacement Candle Vol ≥ 1.8x · الأعلى كفاءة علمياً +0.88R)
+        #   (ب) 🚀 تأكيد 3 إغلاقات يومية متتالية بالجسم (Confirmed 3D BOS · كفاءة +0.39R)
+        bos_item = None
+
+        # (أ) فحص شمعة الاندفاع المؤسسي (آخر شمعة يومية مغلقة أو التي قبلها لإتاحة نافذة إعادة الاختبار في اليوم الثاني/الثالث)
+        for d_shift in (0, 1, 2):
+            ib = -2 - d_shift
+            end_b = n + ib
+            if end_b < 30:
+                continue
+            b18_d = max(max(o[k], c[k]) for k in range(end_b - 20, end_b))
+            vol20_d = sum(v[end_b - 20:end_b]) / 20.0
+            vol_x_d = v[ib] / vol20_d if vol20_d > 0 else 1.0
+            rng_b = max(1e-9, h[ib] - l[ib])
+            close_pos_b = (c[ib] - l[ib]) / rng_b
+            dist_now_atr = (price - b18_d) / atr_d
+            if (c[ib - 1] <= b18_d and c[ib] > b18_d + 0.20 * atr_d and c[ib] > o[ib]
+                and close_pos_b >= 0.70 and vol_x_d >= 1.80
+                and -0.10 <= dist_now_atr <= 2.20 and rsi_d < 78.0 and price >= b18_d * 0.99):
+                pre_hi = max(h[max(0, end_b - 160):end_b])
+                pre_lo = min(l[max(0, end_b - 160):end_b])
+                pre_pos = (b18_d - pre_lo) / (pre_hi - pre_lo) if pre_hi > pre_lo else 0.5
+                from_sq = pre_pos <= 0.38
+
+                e_hi = min(price, b18_d + 0.25 * atr_d)
+                e_lo = max(b18_d - 0.06 * atr_d, e_hi - 0.30 * atr_d)
+                avg_e = (e_lo + e_hi) / 2.0
+                stop = b18_d - 0.52 * atr_d
+                r = abs(avg_e - stop)
+                risk_pct = (r / avg_e) * 100.0 if avg_e > 0 else 99.0
+                if r > 0 and 1.0 <= risk_pct <= 22.0:
+                    hi120 = max(h[-min(120, n):])
+                    hi220 = max(h[-min(220, n):])
+                    t1 = max(avg_e + 2.0 * r, min(hi120, avg_e + 3.2 * r) if hi120 > avg_e + 1.95 * r else avg_e + 2.0 * r)
+                    t2 = max(t1 + 0.9 * r, avg_e + 3.2 * r)
+                    t3 = max(hi220 if (avg_e + 4.2 * r <= hi220 <= avg_e + 8.0 * r) else 0, avg_e + 4.6 * r)
+                    if t3 <= t2:
+                        t3 = t2 + 1.2 * r
+                    rr = [(t1 - avg_e) / r, (t2 - avg_e) / r, (t3 - avg_e) / r]
+                    in_retest = dist_now_atr <= 0.65
+                    sc = 98.5 + min(5.0, (vol_x_d - 1.8) * 1.8) + (2.5 if in_retest else 0.0) + (2.5 if from_sq else 0.0)
+                    bos_item = {
+                        "sym": sym, "name": name, "price": price, "tick": tick, "qv": qv, "chg": chg24,
+                        "funding": fund, "rsi_d": rsi_d, "bos_kind": "displacement",
+                        "kind_badge": "⚡ اندفاع مؤسسي فوري (Vol ≥ 1.8x · كفاءة +0.88R)",
+                        "lvl_type": "سقف 20 يوماً", "struct_lvl": b18_d,
+                        "closes_3": [c[ib]], "close_note": f"شمعة اختراق ممتلئة ({close_pos_b*100:.0f}% قرب القمة) بإغلاق {fp(c[ib], tick)}",
+                        "vol_x": vol_x_d, "dist_atr": dist_now_atr,
+                        "from_squeeze": from_sq, "in_retest": in_retest,
+                        "state_lbl": "🎯 تعيد اختبار الكسر الآن (نقطة مثالية)" if in_retest else "⏳ علّق Limit عند إعادة اختبار الكسر",
+                        "score": round(sc, 1), "entry_lo": e_lo, "entry_hi": e_hi, "avg": avg_e, "stop": stop,
+                        "targets": [t1, t2, t3], "rr": rr, "risk_pct": risk_pct,
+                        "dist_pct": (e_hi / price - 1.0) * 100.0,
+                    }
+                    break
+
+        # (ب) إن لم تكن شمعة اندفاع منفردة، نفحص تأكيد 3 إغلاقات يومية متتالية بالجسم (+0.39R EV)
+        if bos_item is None:
+            for shift in (0, 1, 2):
+                i1, i2, i3 = -4 - shift, -3 - shift, -2 - shift
+                ipre = -5 - shift
+                end_idx = n + i1
+                if end_idx < 45:
+                    continue
+                piv_cands = [val for p_idx, val in k1["ph"] if end_idx - 42 <= p_idx <= end_idx - 2]
+                body18_ceil = max(max(o[k], c[k]) for k in range(end_idx - 18, end_idx))
+                lvl_opts = []
+                if piv_cands:
+                    lvl_opts.append(("قمة هيكلية يومية", piv_cands[-1]))
+                lvl_opts.append(("سقف تجميع 18 يوماً", body18_ceil))
+
+                for lvl_type, struct_lvl in lvl_opts:
+                    if struct_lvl <= 0:
+                        continue
+                    green_cnt = sum(1 for ii in (i1, i2, i3) if c[ii] >= o[ii])
+                    avg_c3 = (c[i1] + c[i2] + c[i3]) / 3.0
+                    solid_3rd = c[i3] >= (h[i3] + l[i3]) * 0.45
+                    broke_fresh = (c[ipre] <= struct_lvl) or (c[ipre - 1] <= struct_lvl and min(o[i1], c[i1]) <= struct_lvl * 1.02)
+                    if not (broke_fresh and c[i1] > struct_lvl and c[i2] > struct_lvl and c[i3] > struct_lvl and green_cnt >= 2 and avg_c3 >= struct_lvl + 0.08 * atr_d and solid_3rd):
+                        continue
+                    dist_atr = (price - struct_lvl) / atr_d
+                    if not (-0.15 <= dist_atr <= 2.25 and rsi_d < 78.0):
+                        continue
+                    vol3 = (v[i1] + v[i2] + v[i3]) / 3.0
+                    vol20 = sum(v[end_idx - 20:end_idx]) / 20.0
+                    vol_x = vol3 / vol20 if vol20 > 0 else 1.0
+                    if vol_x < 1.10:
+                        continue
+
+                    pre_hi = max(h[max(0, end_idx - 160):end_idx])
+                    pre_lo = min(l[max(0, end_idx - 160):end_idx])
+                    pre_pos = (struct_lvl - pre_lo) / (pre_hi - pre_lo) if pre_hi > pre_lo else 0.5
+                    pre_bodies_lo = sorted(min(o[k], c[k]) for k in range(end_idx - 18, end_idx))
+                    pre_bodies_hi = sorted(max(o[k], c[k]) for k in range(end_idx - 18, end_idx))
+                    pre_box_atr = (pre_bodies_hi[-2] - pre_bodies_lo[1]) / atr_d if atr_d > 0 else 9.0
+                    from_squeeze = (pre_pos <= 0.35 and pre_box_atr <= 4.5)
+
+                    e9_now = e9[-1] or struct_lvl
+                    retest_anchor = max(struct_lvl, min(e9_now, struct_lvl + 0.32 * atr_d))
+                    e_hi = min(price, retest_anchor + 0.22 * atr_d)
+                    e_lo = max(struct_lvl - 0.08 * atr_d, e_hi - 0.30 * atr_d)
+                    avg_e = (e_lo + e_hi) / 2.0
+                    stop = struct_lvl - 0.50 * atr_d
+                    r = abs(avg_e - stop)
+                    risk_pct = (r / avg_e) * 100.0 if avg_e > 0 else 99.0
+                    if r <= 0 or risk_pct > 22.0 or risk_pct < 1.0:
+                        continue
+
+                    hi120 = max(h[-min(120, n):])
+                    hi220 = max(h[-min(220, n):])
+                    t1 = max(avg_e + 1.95 * r, min(hi120, avg_e + 3.2 * r) if hi120 > avg_e + 1.9 * r else avg_e + 2.0 * r)
+                    t2 = max(t1 + 0.9 * r, avg_e + 3.1 * r)
+                    t3 = max(hi220 if (avg_e + 4.2 * r <= hi220 <= avg_e + 8.0 * r) else 0, avg_e + 4.6 * r)
+                    if t3 <= t2:
+                        t3 = t2 + 1.2 * r
+                    rr = [(t1 - avg_e) / r, (t2 - avg_e) / r, (t3 - avg_e) / r]
+
+                    in_retest = dist_atr <= 0.70
+                    sc = 94.0 + min(5.0, (vol_x - 1.0) * 2.2) + (2.5 if in_retest else 0.0) + (3.5 if from_squeeze else 0.0)
+                    c3_str = " ← ".join(fp(x, tick) for x in (c[i1], c[i2], c[i3]))
+                    bos_item = {
+                        "sym": sym, "name": name, "price": price, "tick": tick, "qv": qv, "chg": chg24,
+                        "funding": fund, "rsi_d": rsi_d, "bos_kind": "3closes",
+                        "kind_badge": "🚀 تأكيد 3 إغلاقات يومية بالجسم (كفاءة +0.39R)",
+                        "lvl_type": lvl_type, "struct_lvl": struct_lvl,
+                        "closes_3": [c[i1], c[i2], c[i3]], "close_note": c3_str,
+                        "vol_x": vol_x, "dist_atr": dist_atr,
+                        "from_squeeze": from_squeeze, "in_retest": in_retest,
+                        "state_lbl": "🎯 تعيد اختبار الكسر الآن (جاهزة)" if in_retest else "⏳ علّق Limit لإعادة الاختبار",
+                        "score": round(sc, 1), "entry_lo": e_lo, "entry_hi": e_hi, "avg": avg_e, "stop": stop,
+                        "targets": [t1, t2, t3], "rr": rr, "risk_pct": risk_pct,
+                        "dist_pct": (e_hi / price - 1.0) * 100.0,
+                    }
+                    break
+                if bos_item:
+                    break
+
+        return inv_item, bos_item
+
+    squeeze_list, bos_list = [], []
+    with _cf.ThreadPoolExecutor(max_workers=10) as ex:
+        for inv_it, bos_it in ex.map(_eval_one, pool):
+            if inv_it:
+                squeeze_list.append(inv_it)
+            if bos_it:
+                bos_list.append(bos_it)
+
+    # إذا انتقلت عملة فعلياً إلى كسر الهيكل بـ 3 إغلاقات يومية، تُعرض في قسم الكسر النشط مع شارة التاج ولا تُكرر في الانتظار القاعي
+    bos_syms = {b["sym"] for b in bos_list}
+    squeeze_list = [s for s in squeeze_list if s["sym"] not in bos_syms]
+
+    squeeze_list.sort(key=lambda x: (-int(x["spring_done"]), -x["score"], x["pos180"]))
+    bos_list.sort(key=lambda x: (-int(x.get("bos_kind") == "displacement"), -int(x["from_squeeze"]), -int(x["in_retest"]), -x["score"]))
+
+    out = {"ts": now_ms, "btc_regime": btc_regime, "squeeze": squeeze_list[:10], "bos3": bos_list[:10]}
+    try:
+        json.dump(out, open(macro_path, "w", encoding="utf-8"), ensure_ascii=False, default=str)
+    except Exception:
+        pass
+    return out
+
+
+def build_html(trades, meta, state, stats, t24, prem, tracked, held, now, exp_data=None, lt_stats=None, macro_data=None):
     if exp_data is None:
         try:
             exp_data = json.load(open(os.path.join(BASE, "explosion_candidates.json")))
         except Exception:
             exp_data = {}
+    if lt_stats is None:
+        lt_stats = update_lifetime_stats(held or tracked, state, now)
+    if macro_data is None:
+        is_conf = state.get("confirm_ts", 0) > meta.get("ts", 0)
+        macro_data = scan_macro_regimes(t24, prem, now, is_confirm_run=is_conf)
     ts = now.strftime("%Y-%m-%d %H:%M")
     day = now.strftime("%Y-%m-%d")
     longs = [t for t in trades if t["side"] == "LONG"]
@@ -1235,12 +1658,25 @@ tr.rcancel td{opacity:.68}
 .nav a.shortb:hover{background:#43191f;color:#fca5a5}
 .nav a.expb{background:#2f1f09;color:#fbbf24;border-color:#784f12}
 .nav a.expb:hover{background:#452c0c;color:#fde68a}
+.nav a.invb{background:linear-gradient(135deg,#24133d,#10293d);color:#d8b4fe;border-color:#6d28d9}
+.nav a.invb:hover{background:linear-gradient(135deg,#331a57,#163a54);color:#f3e8ff}
 .nav .cnt{background:rgba(255,255,255,.12);border-radius:20px;padding:0 7px;font-size:11px;margin-right:4px}
 h2.hlong{border-right-color:#22c55e}
 h2.hshort{border-right-color:#ef4444}
 h2.hexp{border-right-color:#f59e0b}
+h2.hinv{border-right-color:#a855f7}
+h2.hbos{border-right-color:#38bdf8}
 .card.exp{border-right:4px solid #f59e0b;background:#0e131d}
+.card.inv{border-right:4px solid #a855f7;background:#0e1120}
+.card.bos{border-right:4px solid #38bdf8;background:#0b1522}
 .expbadge{background:#382408;color:#fbbf24;border:1px solid #855512;padding:2px 9px}
+.invbadge{background:#281442;color:#d8b4fe;border:1px solid #7e22ce;padding:2px 9px}
+.bosbadge{background:#0c2d48;color:#7dd3fc;border:1px solid #0284c7;padding:2px 9px}
+.crownbadge{background:linear-gradient(135deg,#422006,#3b0764);color:#fde047;border:1px solid #eab308;padding:2px 9px}
+.ltbar{background:linear-gradient(135deg,#0d192b,#0a1220);border:1px solid #243b5e;border-radius:14px;padding:11px 15px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.ltpills{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ltp{background:#08101c;border:1px solid #1e314d;border-radius:10px;padding:5px 11px;font-size:12.5px;display:inline-flex;align-items:center;gap:6px}
+.ltp b{font-size:14px;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px}
 .chip{text-decoration:none;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:8px;background:#101a29;border:1px solid #1e2c42;color:#cbd8e8}
 .chip.long:hover{border-color:#22c55e;color:#4ade80;background:#0e2419}
@@ -1354,6 +1790,132 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
     else:
         exp_section += '<div class="note" style="background:#0d1622;border-color:#1e2c42">لا توجد عملات تستوفي شروط الانفجار الصارمة في هذه اللحظة.</div>'
 
+    # ------- قسم العملات الاستثمارية (العصر والقاع) + كسر الهيكل اليومي النشط (المحرّك المزدوج)
+    inv_squeeze = (macro_data or {}).get("squeeze") or []
+    bos_active = (macro_data or {}).get("bos3") or []
+    btc_reg = (macro_data or {}).get("btc_regime") or {"state": "neutral", "label": "🟡 مناخ محايد", "advice": "التزم بوقف صريح 1% لكل صفقة."}
+    n_macro = len(inv_squeeze) + len(bos_active)
+
+    def card_inv(m):
+        tg = "".join(
+            f'<div class="lv t{k+1}"><span>هدف استثماري {k+1}</span><b>{fp(m["targets"][k], m["tick"])}</b>'
+            f'<i>{((m["targets"][k]/m["avg"]-1)*100):+.1f}% · R{m["rr"][k]:.1f}</i></div>'
+            for k in range(3)
+        )
+        fcls = "pos" if m["funding"] <= 0 else "neg"
+        reasons_txt = " · ".join(m.get("reasons") or [])
+        pos_usd = m.get("pos_usd_1r", 100.0)
+        return f'''
+<article class="card inv" id="inv-{m["name"]}" data-sym="{m["name"]}">
+  <div class="chead">
+    <div class="csym">💎 {m["name"]}<span>/USDT</span> <small>{m["score"]:.1f} نقطة</small>
+      <em class="g invbadge">{m["badge"]}</em>
+    </div>
+    <div><span class="pill" style="background:#281442;color:#e9d5ff;border:1px solid #7e22ce">استثمارية · تجميع قاعي (+0.39R EV)</span></div>
+  </div>
+  <div class="cbody">
+    <div class="levels">
+      <div class="lv entry" style="border-color:#8b5cf6;background:#150f29"><span>منطقة التمركز وصيد التلاعب (دفعتين)</span><b style="color:#ddd6fe">{fp(m["entry_lo"], m["tick"])} – {fp(m["entry_hi"], m["tick"])}</b><i>{m["dist_pct"]:+.2f}% عن السعر · تشمل جيب التلاعب السُفلي</i></div>
+      <div class="lv stop"><span>وقف صريح إلزامي في المنصة (Hard Stop)</span><b>{fp(m["stop"], m["tick"])}</b><i>مخاطرة السعر {m["risk_pct"]:.2f}% ← حجم الصفقة {pos_usd:.0f}$ لكل 1000$ (= 1R)</i></div>
+      {tg}
+    </div>
+    <div class="meta">
+      <div><span>السعر الآن</span><b>{fp(m["price"], m["tick"])}</b></div>
+      <div><span>نطاق العصر الأفقي (20ي)</span><b style="direction:ltr">{fp(m["box_floor"], m["tick"])} – {fp(m["box_ceil"], m["tick"])} ({m["box_pct"]:.1f}%)</b></div>
+      <div><span>موقع القاع الكلي (180ي)</span><b class="pos">{m["pos180"]:.1f}% (منطقة قاع)</b></div>
+      <div><span>شدة العصر والانكماش</span><b style="color:#d8b4fe">{m["squeeze_pct"]:.0f}%</b></div>
+      <div><span>RSI اليومي</span><b>{m["rsi_d"]:.1f}</b></div>
+      <div><span>فاندنغ</span><b class="{fcls}">{m["funding"]:+.4f}%</b></div>
+      <div><span>سيولة 24س</span><b>{m["qv"]:,.1f}M$</b></div>
+      <div><span>بصمة التجميع والدفاع الشرائي</span><b style="color:#c4b5fd">{reasons_txt}</b></div>
+    </div>
+    <div class="plan" style="border-color:#6d28d9;background:#120d24;color:#d8b4fe"><b style="color:#e9d5ff">القاعدة العلمية الصارمة للتنفيذ:</b> لا توجد عملة مضمونة الصعود 100%؛ التفوق الإحصائي هنا (+0.39R) يأتي من <b>تثبيت أمر وقف صريح (Hard Stop) في المنصة</b> تحت ذيل التلاعب وتصغير حجم المركز إلى <b>{pos_usd:.0f}$</b> (من كل 1000$ بالمحفظة · <b>Spot أو رافعة 1x–2x فقط</b>) بحيث يستحيل أن تتجاوز الخسارة <b>-1R (1%)</b> حتى لو انهار السوق فجأة، بينما تُغلق 50% عند هدف 1 ويُنقل الوقف للتعادل.</div>
+  </div>
+</article>'''
+
+    def card_bos(b):
+        tg = "".join(
+            f'<div class="lv t{k+1}"><span>هدف موجة {k+1}</span><b>{fp(b["targets"][k], b["tick"])}</b>'
+            f'<i>{((b["targets"][k]/b["avg"]-1)*100):+.1f}% · R{b["rr"][k]:.1f}</i></div>'
+            for k in range(3)
+        )
+        c_note = b.get("close_note") or " ← ".join(fp(x, b["tick"]) for x in b["closes_3"])
+        kind_b = b.get("kind_badge", "🚀 كسر هيكل يومي")
+        crown = '<em class="g crownbadge">👑 جوهرة متكاملة (خرجت من قاع تجميعي)</em>' if b.get("from_squeeze") else ""
+        bos_lev = "2x–3x" if b["risk_pct"] <= 9.0 else "Spot أو 1x–2x"
+        pos_usd_b = round((10.0 / abs(b["avg"] - b["stop"])) * b["avg"], 0) if abs(b["avg"] - b["stop"]) > 0 else 100
+        return f'''
+<article class="card bos" id="bos-{b["name"]}" data-sym="{b["name"]}">
+  <div class="chead">
+    <div class="csym">🚀 {b["name"]}<span>/USDT</span> <small>{b["score"]:.1f} نقطة</small>
+      <em class="g bosbadge">{kind_b}</em>
+      <em class="g" style="background:#0f291e;color:#6ee7b7;border:1px solid #15803d">{b["state_lbl"]}</em> {crown}
+    </div>
+    <div><span class="pill" style="background:#0c2d48;color:#7dd3fc;border:1px solid #0284c7">كسر هيكل يومي نشط LONG</span></div>
+  </div>
+  <div class="cbody">
+    <div class="levels">
+      <div class="lv entry" style="border-color:#0284c7;background:#0a1d30"><span>منطقة إعادة اختبار الكسر (Limit)</span><b style="color:#bae6fd">{fp(b["entry_lo"], b["tick"])} – {fp(b["entry_hi"], b["tick"])}</b><i>{b["dist_pct"]:+.2f}% عن السعر · بُعد {b["dist_atr"]:.2f} ATR يومي عن الكسر</i></div>
+      <div class="lv stop"><span>وقف صريح لفشل الكسر (Hard Stop)</span><b>{fp(b["stop"], b["tick"])}</b><i>مخاطرة {b["risk_pct"]:.2f}% ({bos_lev} · حجم {pos_usd_b:.0f}$ لكل 1000$)</i></div>
+      {tg}
+    </div>
+    <div class="meta">
+      <div><span>السعر الآن</span><b>{fp(b["price"], b["tick"])}</b></div>
+      <div><span>السقف المكسور ({b["lvl_type"]})</span><b class="pos">{fp(b["struct_lvl"], b["tick"])}</b></div>
+      <div class="sr"><span>تفاصيل إغلاق الكسر اليومي بالجسم</span><b style="color:#7dd3fc;direction:ltr">{c_note}</b></div>
+      <div><span>تدفق السيولة المؤسسية</span><b class="pos">{b["vol_x"]:.2f}x من متوسط 20ي</b></div>
+      <div><span>RSI اليومي</span><b>{b["rsi_d"]:.1f}</b></div>
+      <div><span>سيولة 24س</span><b>{b["qv"]:,.1f}M$</b></div>
+    </div>
+    <div class="plan" style="border-color:#0284c7;background:#091829;color:#bae6fd"><b style="color:#7dd3fc">خطة اقتناص كسر الهيكل (عملة نشطة):</b> الكسر المؤكد (سواء بشمعة اندفاع مؤسسية عالية السيولة أو بـ 3 إغلاقات يومية بالجسم) يعيد اختبار سقفه المكسور في ~60% من الحالات قبل موجة التحليق · <b>علّق أمر Limit في منطقة إعادة الاختبار مع وقف صريح في المنصة</b> ولا تطارد قمة الشمعة الخضراء سوقياً.</div>
+  </div>
+</article>'''
+
+    reg_bg = "#092115" if btc_reg["state"] == "bull" else ("#1f1908" if btc_reg["state"] == "oversold" else "#23120b")
+    reg_bd = "#1b683e" if btc_reg["state"] == "bull" else ("#855512" if btc_reg["state"] == "oversold" else "#9a3412")
+    macro_section = f'''
+<div id="macro" style="scroll-margin-top:75px">
+  <h2 class="hinv">💎 العملات الاستثمارية وكسر الهيكل اليومي (1D) — {n_macro} عملة</h2>
+  <div class="note" style="background:{reg_bg};border-color:{reg_bd};margin-bottom:10px">
+    <b>🧭 مؤشر مناخ البيتكوين اليومي للتمركز: {btc_reg["label"]}</b> — {btc_reg["advice"]}
+  </div>
+  <div class="grid2" style="margin-bottom:12px">
+    <div class="note" style="background:#120d22;border-color:#581c87;margin:0">
+      <b style="color:#e9d5ff">🟣 أولاً: 🧲 العملات الاستثمارية (مرحلة العصر والقاع — {len(inv_squeeze)})</b><br>
+      تُشترط هنا <b>علامة دفاع شرائي فعلية</b> (اكتمال ذيل التلاعب السُفلي <i>Spring</i> أو انحراف تعافي <i>RSI</i>) لاستبعاد العملات الميتة، مع <b>أمر وقف صريح إلزامي (Hard Stop)</b> وتصغير حجم المركز ليبقى أقصى خطر -1R بالضبط.
+    </div>
+    <div class="note" style="background:#091829;border-color:#0369a1;margin:0">
+      <b style="color:#7dd3fc">🩵 ثانياً: 🚀 كسر الهيكل النشط (محرك مزدوج — {len(bos_active)})</b><br>
+      يرصد <b>⚡ شمعة الاندفاع المؤسسي الفوري (Vol ≥ 1.8x · كفاءة +0.88R)</b> منذ اليوم الأول لالتقاط إعادة الاختبار مبكراً، إلى جانب <b>🚀 تأكيد 3 إغلاقات يومية متتالية بالجسم (+0.39R)</b> للشراء فقط (LONG).
+    </div>
+  </div>
+  <h2 class="hinv" style="font-size:16.5px;margin-top:14px">🧲 1) قائمة العصر والقاع الاستثماري المؤيد بدفاع شرائي — {len(inv_squeeze)}</h2>
+  {"".join(card_inv(m) for m in inv_squeeze) if inv_squeeze else '<div class="note" style="background:#0d1622;border-color:#1e2c42">لا توجد عملات في قاع وعصر أفقي مكتمل مع دفاع شرائي في هذه اللحظة.</div>'}
+  <h2 class="hbos" style="font-size:16.5px;margin-top:20px">🚀 2) قائمة كسر الهيكل اليومي النشط (اندفاع مؤسسي + 3 إغلاقات بالجسم) — {len(bos_active)}</h2>
+  {"".join(card_bos(b) for b in bos_active) if bos_active else '<div class="note" style="background:#0d1622;border-color:#1e2c42">لا توجد عملات في موجة كسر هيكل يومي نشط ضمن مسافة إعادة الاختبار حالياً.</div>'}
+</div>'''
+
+    # ------- شريط العداد التراكمي العام منذ بدء التشغيل
+    lt_w = int((lt_stats or {}).get("wins", 0))
+    lt_l = int((lt_stats or {}).get("losses", 0))
+    lt_tot = lt_w + lt_l
+    lt_wr = (lt_w / lt_tot * 100.0) if lt_tot > 0 else 0.0
+    lt_net = float((lt_stats or {}).get("net_r", 0.0))
+    lt_since = (lt_stats or {}).get("started_at", ts)
+    lifetime_bar_html = f'''
+<div class="ltbar">
+  <div style="font-size:12.5px;font-weight:700;color:#cbd5e1">
+    📊 السجل التراكمي العام للصفقات المحسومة <span style="color:#7d8ea3;font-weight:400">(منذ {lt_since} · يُحدَّث آلياً مع كل تقرير)</span>
+  </div>
+  <div class="ltpills">
+    <div class="ltp"><span>✅ رابحة مغلقة:</span><b class="pos">{lt_w}</b></div>
+    <div class="ltp"><span>🛑 خاسرة مغلقة:</span><b class="neg">{lt_l}</b></div>
+    <div class="ltp"><span>🏆 نسبة النجاح:</span><b style="color:#fde047">{lt_wr:.1f}%</b></div>
+    <div class="ltp"><span>💰 صافي محقق:</span><b class="{'pos' if lt_net>=0 else 'neg'}" style="direction:ltr">{lt_net:+.2f}R</b></div>
+    <div class="ltp" style="border-style:dashed"><span>⏳ مفتوحة الآن:</span><b><span class="pos">{c_open_win} رابحة</span> / <span class="neg">{c_open_loss} خاسرة</span></b></div>
+  </div>
+</div>'''
+
     sections = ""
     for title, arr, idd, desc in (
         ("✅ لمسة فورية — المنطقة على بُعد ≤ 0.5 ATR", now_ok, "now", "أعلى احتمال تنفيذ (~80% خلال 24 ساعة حسب القياس)"),
@@ -1384,9 +1946,50 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
         dead_warn = " · ⚠️ تنبيه: ساعة سيولة ضعيفة" if _cur_dt.hour in (1, 2, 7, 13, 14, 22) else ""
         win_note = f'تنفيذ خارج المواعيد المتفق عليها (02:45 تأكيدي · 03:05 · 11:05 · 15:05 · 19:05 · 23:05) بطلب صريح من المستخدم{dead_warn}'
 
+    # ------- صفوة الدورة المتوازنة (منع التكدس ومخاطرة الارتباط العالي بالبيتكوين)
+    BIG_MAJORS = {"BTC", "ETH", "SOL", "BNB"}
+    ordered_pool = sorted(trades, key=lambda x: (0 if x["reach"] in ("A", "B") else 1, -x["score"], x["dist_atr"]))
+    div_picks = []
+    cnt_side = {"LONG": 0, "SHORT": 0}
+    used_major = False
+    for cand_t in ordered_pool:
+        if len(div_picks) >= 4:
+            break
+        is_maj = cand_t["name"] in BIG_MAJORS
+        if is_maj and used_major:
+            continue
+        if cnt_side[cand_t["side"]] >= 2:
+            continue
+        div_picks.append(cand_t)
+        cnt_side[cand_t["side"]] += 1
+        if is_maj:
+            used_major = True
+
+    if div_picks:
+        dp_cards = "".join(
+            f'<a href="#t-{p["name"]}" style="text-decoration:none;background:#0a1424;border:1px solid {"#1c5c39" if p["side"]=="LONG" else "#5c2029"};border-radius:11px;padding:8px 12px;display:flex;flex-direction:column;gap:3px;min-width:175px;flex:1">'
+            f'<div style="display:flex;justify-content:space-between;align-items:center">'
+            f'<b style="color:#fff;font-size:14px">{p["name"]}</b>'
+            f'<span class="pill {"long" if p["side"]=="LONG" else "short"}">{p["side"]}</span></div>'
+            f'<div style="font-size:11.5px;color:#9db1c8">الدرجة <b style="color:#fde047">{p["score"]:.1f} ({p["grade"]})</b> · وصول <b>{p["reach"]}</b> ({p["dist_atr"]:.2f} ATR)</div>'
+            f'<div style="font-size:11px;color:#93c5fd;direction:ltr;text-align:left">{fp(p["entry_lo"], p["tick"])} – {fp(p["entry_hi"], p["tick"])}</div>'
+            f'</a>'
+            for p in div_picks
+        )
+        diversified_picks_html = f'''
+<div class="okbox" style="background:linear-gradient(135deg,#0b1929,#0a1520);border-color:#2563eb;margin:12px 0 16px">
+  <div style="font-size:13.5px;font-weight:800;color:#93c5fd;margin-bottom:4px">🛡️ صفوة الدورة المتوازنة (تشكيلة مضادة للتكدس والارتباط — بحد أقصى 4 مراكز)</div>
+  <div style="font-size:12px;color:#9db1c8;margin-bottom:10px">لتفادي فتح عدة صفقات متطابقة تتحرك معاً كصفقة واحدة مع البيتكوين، اختار المحرك تلقائياً أعلى الفرص القريبة مع <b>منع تكرار الكبار (BTC/ETH/SOL/BNB مركز واحد فقط)</b> و<b>موازنة الاتجاه (بحد أقصى 2 شراء + 2 بيع)</b>:</div>
+  <div style="display:flex;flex-wrap:wrap;gap:9px">{dp_cards}</div>
+</div>'''
+    else:
+        diversified_picks_html = ""
+
     report_idx_json = json.dumps({
         "trades": [{"name": t["name"], "side": t["side"], "grade": t["grade"], "score": float(t["score"])} for t in trades],
         "exp": [{"name": e["name"], "score": float(e.get("score", 0))} for e in exp_active],
+        "inv": [{"name": m["name"], "badge": m["badge"], "score": float(m["score"])} for m in inv_squeeze],
+        "bos": [{"name": b["name"], "vol_x": float(b["vol_x"]), "score": float(b["score"])} for b in bos_active],
         "track": [{"name": x["name"], "side": x["side"], "status": x.get("status", "-"), "r_now": x.get("r_now")} for x in tracked],
     }, ensure_ascii=False)
 
@@ -1412,6 +2015,7 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
   </div>
 </div>
 <div id="toast" class="status-toast"></div>
+{lifetime_bar_html}
 
 <div class="hero">
   <span class="stamp">🕒 {ts} — توقيت الرياض (UTC+3)</span>
@@ -1422,6 +2026,7 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
     <div class="kpi"><span>صفقات مؤهلة</span><b>{len(trades)}</b></div>
     <div class="kpi"><span>شراء / بيع</span><b>{len(longs)} / {len(shorts)}</b></div>
     <div class="kpi"><span>🔥 قابلة للانفجار</span><b style="color:#fbbf24">{len(exp_active)}</b></div>
+    <div class="kpi"><span>💎 استثمارية / كسر هيكل</span><b style="color:#d8b4fe">{len(inv_squeeze)} / {len(bos_active)}</b></div>
     <div class="kpi"><span>درجة A</span><b>{len(gradeA)}</b></div>
     <div class="kpi"><span>لمسة فورية (≤0.5 ATR)</span><b>{len(now_ok)}</b></div>
     <div class="kpi"><span>وسيط المسافة عن السعر</span><b>{med_d:.2f} ATR</b></div>
@@ -1435,6 +2040,7 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
   <a class="longb" href="#longs">🟢 صفقات الشراء <span class="cnt">{len(longs)}</span></a>
   <a class="shortb" href="#shorts">🔴 صفقات البيع <span class="cnt">{len(shorts)}</span></a>
   <a class="expb" href="#explode">🔥 قابلة للانفجار <span class="cnt">{len(exp_active)}</span></a>
+  <a class="invb" href="#macro">💎 استثمارية وكسر هيكل <span class="cnt">{n_macro}</span></a>
   <a href="#now">✅ لمسة فورية <span class="cnt">{len(now_ok)}</span></a>
   <a href="#near">🟡 قريبة <span class="cnt">{len(near)}</span></a>
   <a href="#far">🟠 أبعد <span class="cnt">{len(far)}</span></a>
@@ -1464,6 +2070,8 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
 </div>
 <div id="liveCoinResult" style="display:none;margin:10px 0 18px"></div>
 
+{diversified_picks_html}
+
 <h2 id="all">📋 كل الصفقات المؤهلة — {len(trades)}</h2>
 <div class="sub" style="margin-bottom:8px">مرتبة بالأولوية: الدرجة ثم قرب منطقة الدخول · اضغط على رمز العملة للانتقال إلى بطاقتها التفصيلية · الدرجة A = ≥103 · B = 99–103 · C = 95–99</div>
 <div class="twrap"><table>
@@ -1473,6 +2081,8 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
 {side_sections}
 
 {exp_section}
+
+{macro_section}
 
 {sections}
 
