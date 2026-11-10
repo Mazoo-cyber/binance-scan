@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 17,
-  "losses": 32,
-  "net_r": 3.79,
+  "losses": 33,
+  "net_r": 2.655,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -346,7 +346,16 @@
       "res": "L",
       "r": -1.0,
       "ts": 1794343573231
+    },
+    "BNBUSDT|SHORT|1794329499178": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.135,
+      "ts": 1794345366907
     }
   },
-  "updated_at": "2026-11-10 23:46"
+  "updated_at": "2026-11-11 00:16",
+  "breakevens": 0
 }
