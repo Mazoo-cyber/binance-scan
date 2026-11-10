@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 0,
-  "losses": 5,
-  "net_r": -5.0,
+  "losses": 6,
+  "net_r": -6.0,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -38,7 +38,14 @@
       "res": "L",
       "r": -1.0,
       "ts": 1794261252524
+    },
+    "NXPCUSDT|SHORT|1794261252457": {
+      "sym": "NXPCUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794269714601
     }
   },
-  "updated_at": "2026-11-10 01:41"
+  "updated_at": "2026-11-10 03:15"
 }
