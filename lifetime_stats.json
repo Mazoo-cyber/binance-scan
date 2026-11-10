@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 0,
-  "losses": 8,
-  "net_r": -8.0,
+  "wins": 2,
+  "losses": 15,
+  "net_r": -9.9,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -59,7 +59,70 @@
       "res": "L",
       "r": -1.0,
       "ts": 1794272236759
+    },
+    "NIGHTUSDT|SHORT|1794249040152": {
+      "sym": "NIGHTUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
+    },
+    "MERLUSDT|LONG|1794264077805": {
+      "sym": "MERLUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
+    },
+    "RAYSOLUSDT|LONG|1794264077805": {
+      "sym": "RAYSOLUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
+    },
+    "ZECUSDT|LONG|1794264077805": {
+      "sym": "ZECUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
+    },
+    "SANDUSDT|SHORT|1794272236096": {
+      "sym": "SANDUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
+    },
+    "XMRUSDT|SHORT|1794272236096": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 3.1,
+      "ts": 1794300899822
+    },
+    "AVAXUSDT|SHORT|1794272236096": {
+      "sym": "AVAXUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.0,
+      "ts": 1794300899822
+    },
+    "ARBUSDT|LONG|1794272236096": {
+      "sym": "ARBUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
+    },
+    "ARUSDT|SHORT|1794272236096": {
+      "sym": "ARUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794300899822
     }
   },
-  "updated_at": "2026-11-10 03:57"
+  "updated_at": "2026-11-10 11:54"
 }
