@@ -646,7 +646,11 @@ def evaluate_portfolio_risk_gate(
     chop_min_sc = float(cfg.get("chop_session_min_score", 106.0))
     sess_info = get_session_liquidity_regime(now_riyadh, base_min_score=base_min_sc, chop_min_score=chop_min_sc)
 
-    cur_open_details = [compute_open_position_risk(p, cfg) for p in (open_positions or [])]
+    eff_open_pool = [
+        p for p in (open_positions or [])
+        if (p.get("risk_gate_allowed") is True if enforce_quality_gate else (p.get("risk_gate_allowed", True) is not False))
+    ]
+    cur_open_details = [compute_open_position_risk(p, cfg) for p in eff_open_pool]
     cur_open_details = [d for d in cur_open_details if d["is_open"]]
 
     used_pos = len(cur_open_details)
@@ -1803,11 +1807,11 @@ def simulate_trade_lifecycle(
     expiry_ms = int(t_since + pending_expiry_hours * 3600 * 1000) if (pending_expiry_hours is not None and pending_expiry_hours > 0) else None
     signal_expiry_ts = int(t.get("signal_expiry_ts") or expiry_ms or 0) if expiry_ms else None
 
-    # استعادة الحالة المثبتة مسبقاً (Immutable Entry & Stateful Partial Legs)
+    # استعادة الحالة المثبتة مسبقاً (مع دعم الترقية السلسة للمراكز المرحّلة من الإصدارات السابقة v3.6)
     filled = bool(t.get("filled")) and (t.get("filled_at") is not None) and (t.get("fill_price") is not None)
     filled_at = int(t["filled_at"]) if filled else None
     fill_price = float(t["fill_price"]) if filled else None
-    r_unit = float(t["r_unit"]) if (filled and t.get("r_unit")) else None
+    r_unit = float(t["r_unit"]) if (filled and t.get("r_unit")) else (max(1e-12, abs(fill_price - orig_stop)) if filled else None)
 
     closed_pct = float(t.get("closed_pct", 0.0)) if filled else 0.0
     remaining_pct = float(t.get("remaining_pct", 1.0 - closed_pct)) if filled else 1.0
@@ -1821,7 +1825,7 @@ def simulate_trade_lifecycle(
 
     stop_mode = str(t.get("stop_mode") or "original")
     active_stop = float(t.get("active_stop") if t.get("active_stop") is not None else orig_stop)
-    stop_activated_ts = int(t.get("stop_activated_ts") or 0)
+    stop_activated_ts = int(t.get("stop_activated_ts") or (filled_at if filled else 0))
     last_closed_bar_ts = int(t.get("last_closed_bar_ts") or 0)
 
     exit_ts = t.get("exit_ts")
@@ -1902,6 +1906,8 @@ def simulate_trade_lifecycle(
     # معالجة الشموع الجديدة فقط بعد آخر شمعة مغلقة جرى اعتمادها
     for tt, o, h, l, c in all_bars:
         if last_closed_bar_ts and tt <= last_closed_bar_ts:
+            continue
+        if filled and filled_at is not None and tt < filled_at:
             continue
 
         # 1) حالة الإشارة قبل التفعيل
