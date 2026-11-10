@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 2,
-  "losses": 15,
-  "net_r": -9.9,
+  "wins": 4,
+  "losses": 19,
+  "net_r": -9.75,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -122,7 +122,49 @@
       "res": "L",
       "r": -1.0,
       "ts": 1794300899822
+    },
+    "BCHUSDT|SHORT|1794215109551": {
+      "sym": "BCHUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.28,
+      "ts": 1794312653950
+    },
+    "MAGMAUSDT|SHORT|1794264077805": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794312653950
+    },
+    "QNTUSDT|LONG|1794269714525": {
+      "sym": "QNTUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794312653950
+    },
+    "AIOUSDT|LONG|1794300899767": {
+      "sym": "AIOUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794312653950
+    },
+    "CYBERUSDT|SHORT|1794300899767": {
+      "sym": "CYBERUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794312653950
+    },
+    "VVVUSDT|SHORT|1794300899767": {
+      "sym": "VVVUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 1.87,
+      "ts": 1794312653950
     }
   },
-  "updated_at": "2026-11-10 11:54"
+  "updated_at": "2026-11-10 15:10"
 }
