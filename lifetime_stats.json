@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 4,
-  "losses": 20,
-  "net_r": -10.75,
+  "wins": 16,
+  "losses": 29,
+  "net_r": 4.69,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -171,7 +171,154 @@
       "res": "L",
       "r": -1.0,
       "ts": 1794315551557
+    },
+    "SPXUSDT|SHORT|1794264077805": {
+      "sym": "SPXUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.04,
+      "ts": 1794329499232
+    },
+    "ALGOUSDT|SHORT|1794272236096": {
+      "sym": "ALGOUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 1.86,
+      "ts": 1794329499232
+    },
+    "VVVUSDT|SHORT|1794312653898": {
+      "sym": "VVVUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.1,
+      "ts": 1794329499232
+    },
+    "BNBUSDT|SHORT|1794315551499": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.14,
+      "ts": 1794329499232
+    },
+    "ENAUSDT|SHORT|1794315551499": {
+      "sym": "ENAUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.1,
+      "ts": 1794329499232
+    },
+    "LINKUSDT|SHORT|1794315551499": {
+      "sym": "LINKUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.36,
+      "ts": 1794329499232
+    },
+    "NEARUSDT|SHORT|1794315551499": {
+      "sym": "NEARUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "ZECUSDT|SHORT|1794315551499": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "CAPUSDT|LONG|1794315551499": {
+      "sym": "CAPUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "LSKUSDT|SHORT|1794315551499": {
+      "sym": "LSKUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 1.91,
+      "ts": 1794329499232
+    },
+    "MERLUSDT|LONG|1794315551499": {
+      "sym": "MERLUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "ATOMUSDT|SHORT|1794315551499": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.11,
+      "ts": 1794329499232
+    },
+    "STXUSDT|SHORT|1794315551499": {
+      "sym": "STXUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 1.96,
+      "ts": 1794329499232
+    },
+    "UNIUSDT|SHORT|1794315551499": {
+      "sym": "UNIUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 1.8,
+      "ts": 1794329499232
+    },
+    "PENGUUSDT|SHORT|1794315551499": {
+      "sym": "PENGUUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 2.1,
+      "ts": 1794329499232
+    },
+    "ONDOUSDT|SHORT|1794315551499": {
+      "sym": "ONDOUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "METUSDT|LONG|1794315551499": {
+      "sym": "METUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "DASHUSDT|SHORT|1794315551499": {
+      "sym": "DASHUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "LITUSDT|SHORT|1794315551499": {
+      "sym": "LITUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
+    },
+    "XAUTUSDT|SHORT|1794315551499": {
+      "sym": "XAUTUSDT",
+      "side": "SHORT",
+      "res": "W",
+      "r": 1.96,
+      "ts": 1794329499232
+    },
+    "WLDUSDT|LONG|1794315551499": {
+      "sym": "WLDUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794329499232
     }
   },
-  "updated_at": "2026-11-10 15:59"
+  "updated_at": "2026-11-10 19:51"
 }
