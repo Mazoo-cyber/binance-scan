@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 0,
-  "losses": 6,
-  "net_r": -6.0,
+  "losses": 8,
+  "net_r": -8.0,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -45,7 +45,21 @@
       "res": "L",
       "r": -1.0,
       "ts": 1794269714601
+    },
+    "XAUTUSDT|LONG|1794261252457": {
+      "sym": "XAUTUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794272236759
+    },
+    "HANAUSDT|LONG|1794269714525": {
+      "sym": "HANAUSDT",
+      "side": "LONG",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794272236759
     }
   },
-  "updated_at": "2026-11-10 03:15"
+  "updated_at": "2026-11-10 03:57"
 }
