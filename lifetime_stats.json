@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 4,
-  "losses": 19,
-  "net_r": -9.75,
+  "losses": 20,
+  "net_r": -10.75,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -164,7 +164,14 @@
       "res": "W",
       "r": 1.87,
       "ts": 1794312653950
+    },
+    "CYBERUSDT|SHORT|1794312653898": {
+      "sym": "CYBERUSDT",
+      "side": "SHORT",
+      "res": "L",
+      "r": -1.0,
+      "ts": 1794315551557
     }
   },
-  "updated_at": "2026-11-10 15:10"
+  "updated_at": "2026-11-10 15:59"
 }
