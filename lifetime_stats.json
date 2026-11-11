@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 20,
-  "losses": 59,
-  "net_r": -17.78,
+  "losses": 61,
+  "net_r": -19.864,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -586,8 +586,24 @@
       "res": "L",
       "r": -1.065,
       "ts": 1794397097959
+    },
+    "NEARUSDT|SHORT|1794358667530": {
+      "sym": "NEARUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1794402276714
+    },
+    "SPXUSDT|SHORT|1794358667530": {
+      "sym": "SPXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1794402276714
     }
   },
-  "updated_at": "2026-11-11 14:38",
+  "updated_at": "2026-11-11 16:04",
   "breakevens": 0
 }
