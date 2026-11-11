@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 23,
-  "losses": 79,
-  "net_r": -34.871,
+  "losses": 86,
+  "net_r": -42.13,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -770,8 +770,64 @@
       "res": "L",
       "r": -1.049,
       "ts": 1794416182270
+    },
+    "NXPCUSDT|SHORT|1794315551499": {
+      "sym": "NXPCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1794431168106
+    },
+    "STABLEUSDT|LONG|1794345366892": {
+      "sym": "STABLEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1794431168106
+    },
+    "OPUSDT|SHORT|1794358667530": {
+      "sym": "OPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1794431168106
+    },
+    "PYTHUSDT|LONG|1794397093901": {
+      "sym": "PYTHUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1794431168106
+    },
+    "ICPUSDT|SHORT|1794402271376": {
+      "sym": "ICPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.058,
+      "ts": 1794431168106
+    },
+    "ARXUSDT|SHORT|1794416270272": {
+      "sym": "ARXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1794431168106
+    },
+    "QUSDT|SHORT|1794416270272": {
+      "sym": "QUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.033,
+      "ts": 1794431168106
     }
   },
-  "updated_at": "2026-11-11 19:57",
+  "updated_at": "2026-11-12 00:06",
   "breakevens": 0
 }
