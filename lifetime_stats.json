@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 19,
-  "losses": 48,
-  "net_r": -8.378,
+  "losses": 53,
+  "net_r": -13.54,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -490,8 +490,48 @@
       "res": "L",
       "r": -1.03,
       "ts": 1794379450651
+    },
+    "AGTUSDT|SHORT|1794272236096": {
+      "sym": "AGTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794387195293
+    },
+    "RSRUSDT|LONG|1794329499178": {
+      "sym": "RSRUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1794387195293
+    },
+    "BEAMXUSDT|LONG|1794345366892": {
+      "sym": "BEAMXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1794387195293
+    },
+    "B2USDT|LONG|1794345366892": {
+      "sym": "B2USDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.035,
+      "ts": 1794387195293
+    },
+    "1000PEPEUSDT|LONG|1794345366892": {
+      "sym": "1000PEPEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1794387195293
     }
   },
-  "updated_at": "2026-11-11 09:44",
+  "updated_at": "2026-11-11 11:53",
   "breakevens": 0
 }
