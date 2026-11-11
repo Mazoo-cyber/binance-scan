@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 17,
-  "losses": 33,
-  "net_r": 2.655,
+  "losses": 38,
+  "net_r": -2.545,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -354,8 +354,48 @@
       "res": "L",
       "r": -1.135,
       "ts": 1794345366907
+    },
+    "USELESSUSDT|SHORT|1794315551499": {
+      "sym": "USELESSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1794356135592
+    },
+    "ATOMUSDT|SHORT|1794329499178": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1794356135592
+    },
+    "PUMPUSDT|SHORT|1794329499178": {
+      "sym": "PUMPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.05,
+      "ts": 1794356135592
+    },
+    "ICPUSDT|SHORT|1794329499178": {
+      "sym": "ICPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1794356135592
+    },
+    "RENDERUSDT|SHORT|1794329499178": {
+      "sym": "RENDERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1794356135592
     }
   },
-  "updated_at": "2026-11-11 00:16",
+  "updated_at": "2026-11-11 03:15",
   "breakevens": 0
 }
