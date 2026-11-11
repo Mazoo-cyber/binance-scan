@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 19,
-  "losses": 53,
-  "net_r": -13.54,
+  "wins": 20,
+  "losses": 59,
+  "net_r": -17.78,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -530,8 +530,64 @@
       "res": "L",
       "r": -1.042,
       "ts": 1794387195293
+    },
+    "QUSDT|SHORT|1794315551499": {
+      "sym": "QUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1794397097959
+    },
+    "MAGMAUSDT|SHORT|1794329499178": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1794397097959
+    },
+    "MEGAUSDT|LONG|1794379446543": {
+      "sym": "MEGAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1794397097959
+    },
+    "BULLAUSDT|SHORT|1794379446543": {
+      "sym": "BULLAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1794397097959
+    },
+    "ATOMUSDT|SHORT|1794379446543": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.062,
+      "ts": 1794397097959
+    },
+    "ERAUSDT|LONG|1794387191290": {
+      "sym": "ERAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.006,
+      "ts": 1794397097959
+    },
+    "XMRUSDT|SHORT|1794387191290": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.065,
+      "ts": 1794397097959
     }
   },
-  "updated_at": "2026-11-11 11:53",
+  "updated_at": "2026-11-11 14:38",
   "breakevens": 0
 }
