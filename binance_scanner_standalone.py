@@ -160,6 +160,229 @@ def cached_get(path, key, ttl=900):
     return d
 
 
+OKX_RUBIK_BASE = "https://www.okx.com/api/v5/rubik/stat/contracts"
+
+
+def compute_smart_money_flow_metrics(
+    side,
+    whale_long_pct=None,
+    whale_prev_pct=None,
+    retail_long_pct=None,
+    taker_bs_ratio=None,
+    source="Binance",
+):
+    """يحسب مؤشر توافق تدفق الأموال الذكية والسيولة الهجومية (Smart Money & Taker Order-Flow):
+    - يرتكز أولاً على السيولة التنفيذية الفورية بالسوق (Taker Buy/Sell Volume Ratio: وزن ±1.5).
+    - ثم التغير الجديد في أموال كبار المتداولين خلال 4 ساعات (Whale Position Flow Δ4h: وزن ±1.0).
+    - ثم فجوة تمركز الكبار عكس تكدس عموم الأفراد (Smart vs Retail Gap: وزن ±0.5).
+    - يفعل الحجب التحوطي (sm_veto=True) عند معاكسة السيولة التنفيذية الفورية أو التدفق الكلي لاتجاه الصفقة."""
+    if whale_long_pct is None and taker_bs_ratio is None:
+        return {
+            "sm_available": False,
+            "sm_source": "none",
+            "whale_long_pct": None,
+            "whale_chg_4h": None,
+            "retail_long_pct": None,
+            "smart_vs_retail_gap": None,
+            "taker_bs_ratio": None,
+            "sm_flow_pts": 0.0,
+            "sm_veto": False,
+            "sm_state": "unavailable",
+            "sm_label_ar": "غير متاح (محايد)",
+        }
+
+    pts = 0.0
+    w_chg = None
+    if whale_long_pct is not None and whale_prev_pct is not None:
+        w_chg = round(float(whale_long_pct) - float(whale_prev_pct), 2)
+    gap = None
+    if whale_long_pct is not None and retail_long_pct is not None:
+        gap = round(float(whale_long_pct) - float(retail_long_pct), 2)
+    bsr = round(float(taker_bs_ratio), 4) if taker_bs_ratio is not None else None
+
+    if side == "LONG":
+        if bsr is not None:
+            if bsr >= 1.02:
+                pts += 1.5
+            elif bsr >= 1.00:
+                pts += 0.5
+            elif bsr < 0.98:
+                pts -= 1.5
+            else:
+                pts -= 0.5
+        if w_chg is not None:
+            if w_chg >= 0.25:
+                pts += 1.0
+            elif w_chg <= -0.25:
+                pts -= 1.0
+        if gap is not None:
+            if gap >= 1.0:
+                pts += 0.5
+            elif gap <= -6.0:
+                pts -= 0.5
+        veto = ((bsr is not None and bsr < 0.99) or (pts <= -1.0))
+    else:
+        if bsr is not None:
+            if bsr <= 0.98:
+                pts += 1.5
+            elif bsr <= 1.00:
+                pts += 0.5
+            elif bsr > 1.02:
+                pts -= 1.5
+            else:
+                pts -= 0.5
+        if w_chg is not None:
+            if w_chg <= -0.25:
+                pts += 1.0
+            elif w_chg >= 0.25:
+                pts -= 1.0
+        if gap is not None:
+            if gap <= -5.0:
+                pts += 0.5
+            elif gap >= 2.0:
+                pts -= 0.5
+        veto = ((bsr is not None and bsr > 1.01) or (pts <= -1.0))
+
+    pts = round(pts, 2)
+    if veto:
+        st, lbl = "opposed", "⚠️ سيولة معاكسة للاتجاه"
+    elif pts >= 1.5:
+        st, lbl = "strong_support", "🐋 تدفق ذكي داعم بقوة"
+    elif pts >= 0.5:
+        st, lbl = "aligned", "🟢 سيولة متوافقة"
+    else:
+        st, lbl = "neutral", "⚪ تدفق محايد"
+
+    return {
+        "sm_available": True,
+        "sm_source": source,
+        "whale_long_pct": round(float(whale_long_pct), 2) if whale_long_pct is not None else None,
+        "whale_chg_4h": w_chg,
+        "retail_long_pct": round(float(retail_long_pct), 2) if retail_long_pct is not None else None,
+        "smart_vs_retail_gap": gap,
+        "taker_bs_ratio": bsr,
+        "sm_flow_pts": pts,
+        "sm_veto": bool(veto),
+        "sm_state": st,
+        "sm_label_ar": lbl,
+    }
+
+
+def _fetch_okx_smart_money_fallback(sym):
+    """مصدر احتياطي مجاني وموثوق (OKX V5 Rubik Public API) عند تعذر جلب بيانات عملة من إحصاءات بايننس."""
+    if not sym.endswith("USDT"):
+        return None
+    base = sym[:-4]
+    inst_id = f"{base}-USDT-SWAP"
+    pos_url = f"{OKX_RUBIK_BASE}/long-short-position-ratio-contract-top-trader?instId={inst_id}&period=4H"
+    acc_url = f"{OKX_RUBIK_BASE}/long-short-account-ratio-contract-top-trader?instId={inst_id}&period=4H"
+    req_p = urllib.request.Request(pos_url, headers=HDRS)
+    with urllib.request.urlopen(req_p, timeout=10) as r:
+        dp = json.loads(r.read())
+    rows_p = dp.get("data") or []
+    if dp.get("code") != "0" or not rows_p:
+        return None
+    # OKX تعيد أحدث قراءة في العنصر [0] بصيغة [ts, longShortRatio]
+    r_cur = float(rows_p[0][1])
+    r_prev = float(rows_p[1][1]) if len(rows_p) >= 2 else r_cur
+    w_long = (r_cur / (1.0 + r_cur)) * 100.0 if r_cur >= 0 else 50.0
+    w_prev = (r_prev / (1.0 + r_prev)) * 100.0 if r_prev >= 0 else w_long
+
+    ret_long = None
+    try:
+        req_a = urllib.request.Request(acc_url, headers=HDRS)
+        with urllib.request.urlopen(req_a, timeout=8) as ra:
+            da = json.loads(ra.read())
+        rows_a = da.get("data") or []
+        if da.get("code") == "0" and rows_a:
+            ra_cur = float(rows_a[0][1])
+            ret_long = (ra_cur / (1.0 + ra_cur)) * 100.0 if ra_cur >= 0 else None
+    except Exception:
+        pass
+
+    return {
+        "source": "OKX",
+        "whale_long_pct": w_long,
+        "whale_prev_pct": w_prev,
+        "retail_long_pct": ret_long,
+        "taker_bs_ratio": None,
+    }
+
+
+def fetch_smart_money_raw_for_symbol(sym, now_ms=None, ttl=600):
+    """يجلب بيانات أموال الكبار والسيولة الهجومية للعملة من بايننس أولاً مع تحول تلقائي فوري إلى OKX عند الحاجة."""
+    eff_now = int(now_ms if now_ms is not None else time.time() * 1000)
+    try:
+        pos = cached_get(f"/futures/data/topLongShortPositionRatio?symbol={sym}&period=4h&limit=4", f"{sym}_sm_pos", ttl=ttl)
+        ret = cached_get(f"/futures/data/globalLongShortAccountRatio?symbol={sym}&period=4h&limit=3", f"{sym}_sm_ret", ttl=ttl)
+        tak = cached_get(f"/futures/data/takerlongshortRatio?symbol={sym}&period=4h&limit=4", f"{sym}_sm_tak", ttl=ttl)
+
+        pos_c = [x for x in (pos or []) if int(x["timestamp"]) <= eff_now] or list(pos or [])
+        ret_c = [x for x in (ret or []) if int(x["timestamp"]) <= eff_now] or list(ret or [])
+        tak_c = [x for x in (tak or []) if int(x["timestamp"]) + 4 * 3600 * 1000 <= eff_now]
+        if not tak_c and tak:
+            tak_c = tak[:-1] if len(tak) > 1 else list(tak)
+
+        if pos_c or tak_c:
+            w_long = float(pos_c[-1]["longAccount"]) * 100.0 if pos_c else None
+            w_prev = float(pos_c[-2]["longAccount"]) * 100.0 if len(pos_c) >= 2 else w_long
+            r_long = float(ret_c[-1]["longAccount"]) * 100.0 if ret_c else None
+            bs_rat = float(tak_c[-1]["buySellRatio"]) if tak_c else None
+            return {
+                "source": "Binance",
+                "whale_long_pct": w_long,
+                "whale_prev_pct": w_prev,
+                "retail_long_pct": r_long,
+                "taker_bs_ratio": bs_rat,
+            }
+    except Exception as exc:
+        record_diag_warning("binance_sm_fallback", "تعذر جلب Smart Money من بايننس — محاولة OKX الاحتياطية", symbol=sym, exc=exc)
+
+    try:
+        okx_res = _fetch_okx_smart_money_fallback(sym)
+        if okx_res:
+            return okx_res
+    except Exception as exc2:
+        record_diag_warning("okx_sm_fallback_failed", "تعذر جلب Smart Money من المنصة الاحتياطية OKX", symbol=sym, exc=exc2)
+    return None
+
+
+def enrich_candidates_with_smart_money(candidates, now_ms=None, max_workers=8):
+    """يثري فقط العملات المؤهلة في المسح ببيانات تدفق الأموال الذكية والسيولة الهجومية بالتوازي (< 3 ثوانٍ)."""
+    if not candidates:
+        return []
+    uniq_syms = list(dict.fromkeys(c["sym"] for c in candidates))
+    raw_map = {}
+    with cf.ThreadPoolExecutor(max_workers=max(1, min(max_workers, len(uniq_syms)))) as ex:
+        futs = {ex.submit(fetch_smart_money_raw_for_symbol, s, now_ms): s for s in uniq_syms}
+        for f in cf.as_completed(futs):
+            s = futs[f]
+            try:
+                raw_map[s] = f.result()
+            except Exception as exc:
+                record_diag_warning("sm_enrich_worker", "خطأ غير متوقع أثناء إثراء Smart Money", symbol=s, exc=exc)
+                raw_map[s] = None
+
+    enriched = []
+    for c in candidates:
+        c2 = dict(c)
+        raw = raw_map.get(c2["sym"])
+        if raw:
+            sm_m = compute_smart_money_flow_metrics(
+                c2["side"],
+                whale_long_pct=raw.get("whale_long_pct"),
+                whale_prev_pct=raw.get("whale_prev_pct"),
+                retail_long_pct=raw.get("retail_long_pct"),
+                taker_bs_ratio=raw.get("taker_bs_ratio"),
+                source=raw.get("source", "Binance"),
+            )
+        else:
+            sm_m = compute_smart_money_flow_metrics(c2["side"])
+        c2.update(sm_m)
+        enriched.append(c2)
+    return enriched
+
+
 # ---------------------------------------------------------------- indicators
 def ema(vals, n):
     out = [None] * len(vals)
@@ -694,11 +917,26 @@ def evaluate_portfolio_risk_gate(
     approved_count = 0
     blocked_count = 0
     watchlist_count = 0
-    for cand in (candidates or []):
+    sm_veto_count = 0
+
+    work_cands = list(candidates or [])
+    if enforce_quality_gate and work_cands:
+        eff_min = chop_min_sc if sess_info["is_chop_session"] else base_min_sc
+        work_cands.sort(
+            key=lambda x: (
+                0 if (float(x.get("score") if x.get("score") is not None else 999.0) >= eff_min - 1e-9 and not x.get("sm_veto")) else 1,
+                -(float(x.get("score") if x.get("score") is not None else 999.0) + 0.8 * float(x.get("sm_flow_pts") or 0.0)),
+                float(x.get("dist_atr") or 0.0),
+            )
+        )
+
+    for cand in work_cands:
         c2 = dict(cand)
         c_risk = float(c2.get("actual_risk_cash") or 0.0)
         c_margin = float(c2.get("margin_required_usd") or 0.0)
         c_score = float(c2.get("score") if c2.get("score") is not None else 999.0)
+        c_sm_pts = float(c2.get("sm_flow_pts") or 0.0)
+        c2["priority_rank_score"] = round(c_score + (0.8 * c_sm_pts if enforce_quality_gate else 0.0), 2)
         is_maj = c2.get("sym") in MAJOR_SYMS
 
         if enforce_quality_gate and c_score < base_min_sc - 1e-9:
@@ -713,6 +951,13 @@ def evaluate_portfolio_risk_gate(
             c2["risk_gate_reason_ar"] = f"احتياطي للمراقبة — نافذة 11:05 المتذبذبة تشترط نخبة {chop_min_sc:.0f}+ (الحالية {c_score:.1f})"
             blocked_count += 1
             watchlist_count += 1
+        elif enforce_quality_gate and bool(c2.get("sm_veto")):
+            c2["risk_gate_allowed"] = False
+            c2["risk_gate_status"] = "WATCHLIST_SMART_MONEY_OPPOSED"
+            c2["risk_gate_reason_ar"] = "احتياطي للمراقبة — السيولة الهجومية وتدفق الكبار يعاكسان الاتجاه حالياً"
+            blocked_count += 1
+            watchlist_count += 1
+            sm_veto_count += 1
         elif used_pos >= max_pos:
             c2["risk_gate_allowed"] = False
             c2["risk_gate_status"] = "BLOCKED_MAX_POSITIONS"
@@ -752,6 +997,7 @@ def evaluate_portfolio_risk_gate(
     init_summary["approved_new_count"] = approved_count
     init_summary["blocked_new_count"] = blocked_count
     init_summary["watchlist_count"] = watchlist_count
+    init_summary["sm_veto_count"] = sm_veto_count
     init_summary["approved_candidates"] = approved_count
     init_summary["blocked_candidates"] = blocked_count
     init_summary["projected_total_risk_cash"] = round(used_risk_cash, 2)
@@ -1646,9 +1892,12 @@ def scan(max_workers=8, verbose=True):
             seen[t["sym"]] = t
     qualified = list(seen.values())
 
+    scan_now_ms = int(time.time() * 1000)
+    qualified = enrich_candidates_with_smart_money(qualified, now_ms=scan_now_ms, max_workers=min(8, max(2, max_workers)))
+
     # فحص العملات القابلة للانفجار وحفظها للتقرير ولمرحلة التأكيد (02:45)
     now_r = dt.datetime.now(RIYADH)
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = BASE
     radar_path = os.path.join(base_dir, "explosion_radar.json")
     exp_path = os.path.join(base_dir, "explosion_candidates.json")
     try:
@@ -1671,7 +1920,7 @@ def scan(max_workers=8, verbose=True):
 
     return qualified, {"universe": len(syms), "top_up": top_up, "top_dn": top_dn,
                        "all": trades, "uni": uni, "extras": extras,
-                       "ts": int(time.time() * 1000)}
+                       "ts": scan_now_ms}
 
 
 # ==============================================================================
@@ -4084,16 +4333,58 @@ def build_html(trades, meta, state, stats, t24, prem, tracked, held, now, exp_da
         rg_status = t.get("risk_gate_status", "")
         if rg_ok:
             rg_badge = f'<em class="g owin">✅ مجاز للتنفيذ (إجمالي المخاطرة بعده {t.get("portfolio_risk_after_pct", act_rpct):.2f}%)</em>'
-        elif rg_status in ("WATCHLIST_GRADE_B", "WATCHLIST_CHOP_SESSION"):
+        elif rg_status in ("WATCHLIST_GRADE_B", "WATCHLIST_CHOP_SESSION", "WATCHLIST_SMART_MONEY_OPPOSED"):
             rg_badge = f'<em class="g b" style="background:#1e293b;color:#fde68a;border-color:#475569">👁️ {t.get("risk_gate_reason_ar")}</em>'
         else:
             rg_badge = f'<em class="g cancelbadge">⛔ احتياطي: {t.get("risk_gate_reason_ar", "تجاوز سقف المحفظة")}</em>'
+
+        sm_avail = bool(t.get("sm_available"))
+        sm_st = t.get("sm_state", "unavailable")
+        sm_lbl = t.get("sm_label_ar") or "غير متاح (محايد)"
+        sm_pts_v = float(t.get("sm_flow_pts") or 0.0)
+        if not sm_avail:
+            sm_pill = ""
+            sm_taker_html = '<b style="color:#94a3b8">غير متاح (محايد)</b>'
+            sm_whale_html = '<b style="color:#94a3b8">غير متاح (محايد)</b>'
+        else:
+            if sm_st == "strong_support":
+                sm_pill = f'<em class="g owin">{sm_lbl} ({sm_pts_v:+.1f})</em>'
+            elif sm_st == "aligned":
+                sm_pill = f'<em class="g" style="background:#0f2e22;color:#6ee7b7;border:1px solid #1f6f50">{sm_lbl} ({sm_pts_v:+.1f})</em>'
+            elif sm_st == "opposed":
+                sm_pill = f'<em class="g slbadge">{sm_lbl} ({sm_pts_v:+.1f})</em>'
+            else:
+                sm_pill = f'<em class="g oflat">{sm_lbl}</em>'
+
+            bsr_v = t.get("taker_bs_ratio")
+            if bsr_v is not None:
+                bsr_f = float(bsr_v)
+                bs_aligned = (side == "LONG" and bsr_f >= 1.00) or (side == "SHORT" and bsr_f <= 1.00)
+                bs_cls = "pos" if bs_aligned else "neg"
+                bs_desc = "شراء سوقي غالب" if bsr_f > 1.005 else ("بيع سوقي غالب" if bsr_f < 0.995 else "متعادل")
+                sm_taker_html = f'<b class="{bs_cls}">{bsr_f:.3f} ({bs_desc})</b>'
+            else:
+                sm_taker_html = '<b style="color:#94a3b8">احتياطي OKX</b>'
+
+            wl_v = t.get("whale_long_pct")
+            wc_v = t.get("whale_chg_4h")
+            rl_v = t.get("retail_long_pct")
+            src_v = t.get("sm_source", "Binance")
+            if wl_v is not None:
+                ws_v = 100.0 - float(wl_v)
+                wc_txt = f" · Δ4س {float(wc_v):+.2f}%" if wc_v is not None else ""
+                rl_txt = f" · الأفراد {float(rl_v):.0f}% شراء" if rl_v is not None else ""
+                src_tag = " [OKX]" if src_v == "OKX" else ""
+                sm_whale_html = f'<b>شراء {float(wl_v):.1f}% / بيع {ws_v:.1f}%{wc_txt}{rl_txt}{src_tag}</b>'
+            else:
+                sm_whale_html = '<b style="color:#94a3b8">غير متاح</b>'
+
         return f'''
 <article class="card {cls}"{id_attr} data-sym="{t["name"]}">
   <div class="chead">
     <div class="csym">{t["name"]}<span>/USDT</span> <small>{t["score"]:.1f} نقطة</small>
       <em class="g {gcol}">درجة {t["grade"]}</em> <em class="g {rcol}">وصول {t["reach"]} · ~{t["reach_p"]}%</em>
-      {trend_badge} {tag_html} {lpill} {rg_badge}
+      {trend_badge} {tag_html} {lpill} {sm_pill} {rg_badge}
     </div>
     <div><span class="pill {cls}">{side_ar}</span></div>
   </div>
@@ -4116,6 +4407,8 @@ def build_html(trades, meta, state, stats, t24, prem, tracked, held, now, exp_da
       <div><span>سيولة 24س</span><b>{c["qv"]:,.0f}M$</b></div>
       <div><span>فاندنغ</span><b class="{fcls}">{c["fund"]:+.4f}%</b></div>
       <div><span>Δ OI (4س)</span>{_fmt_oi_html(t.get("oi_chg"))}</div>
+      <div><span>السيولة الهجومية (Taker B/S)</span>{sm_taker_html}</div>
+      <div class="sr"><span>أموال الكبار (Smart Money)</span>{sm_whale_html}</div>
       <div><span>الكمية والقيمة الاسمية</span><b>{t["qty"]:,.4f} ({notional_u:,.0f}$)</b></div>
       <div><span>المخاطرة النقدية الفعلية</span><b class="neg">{act_rcash:,.2f}$ ({act_rpct:.2f}% من المحفظة)</b></div>
       <div><span>الرافعة والهامش المطلوب</span><b>{lev_u}x · هامش {margin_u:,.0f}$ ({margin_p:.1f}%)</b></div>
@@ -4861,7 +5154,7 @@ ul{margin:8px 0;padding-right:20px}li{margin:4px 0;font-size:13px}
 <style>{css}</style></head><body><div class="wrap" id="top">
 
 <div class="appbar">
-  <div style="font-size:13px;font-weight:700;color:#9ecbff">📱 تطبيق ماسح بايننس الآجل (v4.0 المطور)</div>
+  <div style="font-size:13px;font-weight:700;color:#9ecbff">📱 تطبيق ماسح بايننس الآجل (v4.1 — Smart Money)</div>
   <div class="appbtns">
     <button class="abtn pri" onclick="triggerCloud('scan')">🔄 ابدأ المسح الآن</button>
     <button class="abtn conf" onclick="triggerCloud('confirm')">✅ فحص تأكيد 02:45</button>
@@ -7120,20 +7413,65 @@ def run_phase4_acceptance_tests():
     dt_chop = dt.datetime(2026, 11, 10, 11, 5, tzinfo=RIYADH)
 
     g_prime, s_prime = evaluate_portfolio_risk_gate(sample_cands, [], now_riyadh=dt_prime, enforce_quality_gate=True)
-    assert g_prime[0]["risk_gate_status"] == "WATCHLIST_GRADE_B" and not g_prime[0]["risk_gate_allowed"]
-    assert g_prime[1]["risk_gate_status"] == "APPROVED" and g_prime[1]["risk_gate_allowed"]
-    assert g_prime[2]["risk_gate_status"] == "APPROVED" and g_prime[2]["risk_gate_allowed"]
+    bp = {x["name"]: x for x in g_prime}
+    assert g_prime[0]["name"] == "ELITE"
+    assert bp["MID"]["risk_gate_status"] == "WATCHLIST_GRADE_B" and not bp["MID"]["risk_gate_allowed"]
+    assert bp["GOOD"]["risk_gate_status"] == "APPROVED" and bp["GOOD"]["risk_gate_allowed"]
+    assert bp["ELITE"]["risk_gate_status"] == "APPROVED" and bp["ELITE"]["risk_gate_allowed"]
     assert s_prime["approved_candidates"] == 2 and s_prime["watchlist_count"] == 1
 
     g_chop, s_chop = evaluate_portfolio_risk_gate(sample_cands, [], now_riyadh=dt_chop, enforce_quality_gate=True)
-    assert g_chop[0]["risk_gate_status"] == "WATCHLIST_GRADE_B" and not g_chop[0]["risk_gate_allowed"]
-    assert g_chop[1]["risk_gate_status"] == "WATCHLIST_CHOP_SESSION" and not g_chop[1]["risk_gate_allowed"]
-    assert g_chop[2]["risk_gate_status"] == "APPROVED" and g_chop[2]["risk_gate_allowed"]
+    bc = {x["name"]: x for x in g_chop}
+    assert g_chop[0]["name"] == "ELITE"
+    assert bc["MID"]["risk_gate_status"] == "WATCHLIST_GRADE_B" and not bc["MID"]["risk_gate_allowed"]
+    assert bc["GOOD"]["risk_gate_status"] == "WATCHLIST_CHOP_SESSION" and not bc["GOOD"]["risk_gate_allowed"]
+    assert bc["ELITE"]["risk_gate_status"] == "APPROVED" and bc["ELITE"]["risk_gate_allowed"]
     assert s_chop["approved_candidates"] == 1 and s_chop["watchlist_count"] == 2
-    results.append("✅ [7/7] Smart Quality & Liquidity Session Gate Test: إجازة 103+ في السيولة العالية و106+ في نافذة 11:05 مع إبقاء الباقي للمراقبة.")
+    results.append("✅ [7/8] Smart Quality & Liquidity Session Gate Test: إجازة 103+ في السيولة العالية و106+ في نافذة 11:05 مع إبقاء الباقي للمراقبة.")
+
+    # ------------------------------------------------------------------
+    # اختبار 8: فلتر وترجيح تدفق الأموال الذكية والسيولة الهجومية (Smart Money Veto + Tie-Breaker + Legacy Migration)
+    # ------------------------------------------------------------------
+    sm_good_short = compute_smart_money_flow_metrics("SHORT", whale_long_pct=44.0, whale_prev_pct=45.0, retail_long_pct=55.0, taker_bs_ratio=0.84)
+    sm_bad_short = compute_smart_money_flow_metrics("SHORT", whale_long_pct=62.0, whale_prev_pct=61.0, retail_long_pct=58.0, taker_bs_ratio=1.08)
+    assert sm_good_short["sm_flow_pts"] >= 2.5 and not sm_good_short["sm_veto"] and sm_good_short["sm_state"] == "strong_support"
+    assert sm_bad_short["sm_veto"] is True and sm_bad_short["sm_state"] == "opposed"
+
+    # عند وجود مقعد واحد متاح (max_concurrent_positions=1):
+    # - صفقة OPP (106.0) تُحجب بسبب معاكسة السيولة الهجومية (WATCHLIST_SMART_MONEY_OPPOSED)
+    # - صفقة SM_WIN (104.0 + تدفق ذكي +3.0 => أولوية 106.4) تفوز بالمقعد متفوقةً على FLAT (105.0 + تدفق 0.0 => أولوية 105.0)!
+    sm_gate_cands = [
+        dict({"sym": "OPPUSDT", "name": "OPP", "side": "SHORT", "score": 106.0, "grade": "A", "actual_risk_cash": 95.0, "margin_required_usd": 1000.0}, **sm_bad_short),
+        {"sym": "FLATUSDT", "name": "FLAT", "side": "SHORT", "score": 105.0, "grade": "A", "actual_risk_cash": 95.0, "margin_required_usd": 1000.0, "sm_flow_pts": 0.0, "sm_veto": False},
+        dict({"sym": "SMWINUSDT", "name": "SMWIN", "side": "SHORT", "score": 104.0, "grade": "A", "actual_risk_cash": 95.0, "margin_required_usd": 1000.0}, **sm_good_short),
+    ]
+    g_sm, s_sm = evaluate_portfolio_risk_gate(
+        sm_gate_cands, [], risk_cfg=get_risk_config({"max_concurrent_positions": 1}),
+        now_riyadh=dt_prime, enforce_quality_gate=True,
+    )
+    by_n_sm = {x["name"]: x for x in g_sm}
+    assert by_n_sm["SMWIN"]["risk_gate_allowed"] is True and by_n_sm["SMWIN"]["risk_gate_status"] == "APPROVED"
+    assert by_n_sm["OPP"]["risk_gate_allowed"] is False and by_n_sm["OPP"]["risk_gate_status"] == "WATCHLIST_SMART_MONEY_OPPOSED"
+    assert by_n_sm["FLAT"]["risk_gate_allowed"] is False and by_n_sm["FLAT"]["risk_gate_status"] == "BLOCKED_MAX_POSITIONS"
+    assert s_sm["sm_veto_count"] == 1 and s_sm["approved_candidates"] == 1
+
+    # التوافق العكسي مع صفقات v3.6 المرحّلة التي تخلو من r_unit وlast_closed_bar_ts
+    legacy_tr = {
+        "sym": "LEGUSDT", "name": "LEG", "side": "SHORT", "price": 9.8,
+        "entry_lo": 9.9, "entry_hi": 10.1, "avg": 10.0, "stop": 10.5,
+        "targets": [9.0, 8.5, 8.0], "rr": [2.0, 3.0, 4.0], "qty": 100.0, "tick": 0.01,
+        "origin_ts": 1_700_000_000_000, "filled": True, "filled_at": 1_700_000_600_000, "fill_price": 10.0,
+    }
+    leg_k5 = {
+        "t": [1_700_000_000_000, 1_700_000_600_000, 1_700_000_900_000],
+        "o": [10.0, 10.0, 9.8], "h": [10.6, 10.1, 9.9], "l": [9.9, 9.7, 8.9], "c": [10.0, 9.8, 9.1],
+    }
+    leg_sim = simulate_trade_lifecycle(legacy_tr, leg_k5, now_ms=1_700_001_200_000)
+    assert leg_sim["r_unit"] == 0.5 and leg_sim["trade_status"] == "PARTIAL_TP1"
+    results.append("✅ [8/8] Smart Money Flow Veto, Tie-Breaker & Legacy v3.6 Migration Test: حجب التعارض + ترجيح الأولوية + سلامة الترقية.")
 
     print("=" * 78)
-    print("🧪 نتائج اختبارات القبول للمرحلة الرابعة والانتقاء الذكي (Phase 4 Suite — 7/7 PASSED)")
+    print("🧪 نتائج اختبارات القبول للمرحلة الرابعة والانتقاء الذكي وSmart Money (Phase 4 Suite — 8/8 PASSED)")
     print("=" * 78)
     for line in results:
         print(" ", line)
