@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 23,
-  "losses": 86,
-  "net_r": -42.13,
+  "wins": 27,
+  "losses": 93,
+  "net_r": -38.644,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -826,8 +826,96 @@
       "res": "L",
       "r": -1.033,
       "ts": 1794431168106
+    },
+    "ZILUSDT|SHORT|1794315551499": {
+      "sym": "ZILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 3.11,
+      "ts": 1794441970984
+    },
+    "XPLUSDT|SHORT|1794315551499": {
+      "sym": "XPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 3.368,
+      "ts": 1794441970984
+    },
+    "LITUSDT|LONG|1794329499178": {
+      "sym": "LITUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794441970984
+    },
+    "ARUSDT|LONG|1794379446543": {
+      "sym": "ARUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1794441970984
+    },
+    "INJUSDT|LONG|1794387191290": {
+      "sym": "INJUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1794441970984
+    },
+    "ENAUSDT|SHORT|1794402271376": {
+      "sym": "ENAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.006,
+      "ts": 1794441970984
+    },
+    "HBARUSDT|LONG|1794416270272": {
+      "sym": "HBARUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1794441970984
+    },
+    "1000PEPEUSDT|LONG|1794431164471": {
+      "sym": "1000PEPEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1794441970984
+    },
+    "ETHFIUSDT|LONG|1794431164471": {
+      "sym": "ETHFIUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.052,
+      "ts": 1794441970984
+    },
+    "QUSDT|SHORT|1794431164471": {
+      "sym": "QUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.242,
+      "ts": 1794441970984
+    },
+    "SPXUSDT|LONG|1794431164471": {
+      "sym": "SPXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1794441970984
     }
   },
-  "updated_at": "2026-11-12 01:37",
+  "updated_at": "2026-11-12 03:06",
   "breakevens": 0
 }
