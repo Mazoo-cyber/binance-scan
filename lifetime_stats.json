@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 38,
-  "losses": 102,
-  "net_r": -25.515,
+  "wins": 40,
+  "losses": 103,
+  "net_r": -22.232,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -1074,8 +1074,32 @@
       "res": "L",
       "r": -1.034,
       "ts": 1794485585839
+    },
+    "FARTCOINUSDT|LONG|1794379446543": {
+      "sym": "FARTCOINUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794488839505
+    },
+    "TIAUSDT|SHORT|1794397093901": {
+      "sym": "TIAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.011,
+      "ts": 1794488839505
+    },
+    "CRVUSDT|SHORT|1794416270272": {
+      "sym": "CRVUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.296,
+      "ts": 1794488839505
     }
   },
-  "updated_at": "2026-11-12 15:13",
+  "updated_at": "2026-11-12 16:07",
   "breakevens": 0
 }
