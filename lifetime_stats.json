@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 28,
+  "wins": 30,
   "losses": 93,
-  "net_r": -36.505,
+  "net_r": -33.495,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -922,8 +922,24 @@
       "res": "W",
       "r": 2.139,
       "ts": 1794443635893
+    },
+    "LINKUSDT|SHORT|1794402271376": {
+      "sym": "LINKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.579,
+      "ts": 1794445531086
+    },
+    "ATOMUSDT|SHORT|1794402271376": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.431,
+      "ts": 1794445531086
     }
   },
-  "updated_at": "2026-11-12 03:33",
+  "updated_at": "2026-11-12 04:05",
   "breakevens": 0
 }
