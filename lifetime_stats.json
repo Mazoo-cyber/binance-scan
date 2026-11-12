@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 30,
-  "losses": 93,
-  "net_r": -33.495,
+  "wins": 33,
+  "losses": 98,
+  "net_r": -31.861,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -938,8 +938,72 @@
       "res": "W",
       "r": 1.431,
       "ts": 1794445531086
+    },
+    "GTCUSDT|SHORT|1794249040152": {
+      "sym": "GTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.045,
+      "ts": 1794473778125
+    },
+    "ERAUSDT|LONG|1794402271376": {
+      "sym": "ERAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.155,
+      "ts": 1794473778125
+    },
+    "SOPHUSDT|SHORT|1794402271376": {
+      "sym": "SOPHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1794473778125
+    },
+    "XMRUSDT|SHORT|1794416270272": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.609,
+      "ts": 1794473778125
+    },
+    "OPGUSDT|LONG|1794443629833": {
+      "sym": "OPGUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1794473778125
+    },
+    "MEGAUSDT|LONG|1794443629833": {
+      "sym": "MEGAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1794473778125
+    },
+    "ETHFIUSDT|LONG|1794445527517": {
+      "sym": "ETHFIUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1794473778125
+    },
+    "0GUSDT|SHORT|1794445527517": {
+      "sym": "0GUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.035,
+      "ts": 1794473778125
     }
   },
-  "updated_at": "2026-11-12 04:05",
+  "updated_at": "2026-11-12 11:56",
   "breakevens": 0
 }
