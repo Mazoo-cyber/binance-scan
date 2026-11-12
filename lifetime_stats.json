@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 27,
+  "wins": 28,
   "losses": 93,
-  "net_r": -38.644,
+  "net_r": -36.505,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -914,8 +914,16 @@
       "res": "L",
       "r": -1.044,
       "ts": 1794441970984
+    },
+    "ONDOUSDT|SHORT|1794358667530": {
+      "sym": "ONDOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.139,
+      "ts": 1794443635893
     }
   },
-  "updated_at": "2026-11-12 03:06",
+  "updated_at": "2026-11-12 03:33",
   "breakevens": 0
 }
