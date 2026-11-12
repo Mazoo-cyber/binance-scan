@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 67,
-  "losses": 117,
-  "net_r": 23.323,
+  "wins": 68,
+  "losses": 123,
+  "net_r": 19.142,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -1426,8 +1426,64 @@
       "res": "L",
       "r": -1.024,
       "ts": 1794516661833
+    },
+    "CTUSDT|SHORT|1794445527517": {
+      "sym": "CTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.147,
+      "ts": 1794527250315
+    },
+    "ETHFIUSDT|SHORT|1794473773863": {
+      "sym": "ETHFIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.05,
+      "ts": 1794527250315
+    },
+    "OPUSDT|SHORT|1794502855340": {
+      "sym": "OPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.052,
+      "ts": 1794527250315
+    },
+    "JTOUSDT|SHORT|1794502855340": {
+      "sym": "JTOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.053,
+      "ts": 1794527250315
+    },
+    "XMRUSDT|SHORT|1794502855340": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.058,
+      "ts": 1794527250315
+    },
+    "1000SHIBUSDT|SHORT|1794502855340": {
+      "sym": "1000SHIBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.071,
+      "ts": 1794527250315
+    },
+    "REUSDT|SHORT|1794502855340": {
+      "sym": "REUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1794527250315
     }
   },
-  "updated_at": "2026-11-12 23:51",
+  "updated_at": "2026-11-13 02:47",
   "breakevens": 0
 }
