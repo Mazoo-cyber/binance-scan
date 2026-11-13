@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 92,
-  "losses": 139,
-  "net_r": 45.806,
+  "wins": 94,
+  "losses": 143,
+  "net_r": 45.933,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -1802,8 +1802,56 @@
       "res": "L",
       "r": -1.052,
       "ts": 1794560072181
+    },
+    "ESPORTSUSDT|SHORT|1794215109551": {
+      "sym": "ESPORTSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794575236076
+    },
+    "BMTUSDT|SHORT|1794397093901": {
+      "sym": "BMTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.317,
+      "ts": 1794575236076
+    },
+    "OPGUSDT|LONG|1794531730369": {
+      "sym": "OPGUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.939,
+      "ts": 1794575236076
+    },
+    "LABUSDT|SHORT|1794560067045": {
+      "sym": "LABUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1794575236076
+    },
+    "ERAUSDT|LONG|1794560067045": {
+      "sym": "ERAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1794575236076
+    },
+    "INJUSDT|SHORT|1794560067045": {
+      "sym": "INJUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1794575236076
     }
   },
-  "updated_at": "2026-11-13 11:54",
+  "updated_at": "2026-11-13 16:07",
   "breakevens": 0
 }
