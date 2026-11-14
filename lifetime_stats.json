@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 157,
-  "losses": 166,
-  "net_r": 175.203,
+  "wins": 166,
+  "losses": 168,
+  "net_r": 197.403,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -2538,8 +2538,96 @@
       "res": "L",
       "r": -1.026,
       "ts": 1794688821271
+    },
+    "STXUSDT|SHORT|1794358667530": {
+      "sym": "STXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.439,
+      "ts": 1794699715946
+    },
+    "SPXUSDT|SHORT|1794473773863": {
+      "sym": "SPXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.574,
+      "ts": 1794699715946
+    },
+    "ATOMUSDT|SHORT|1794588875507": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.606,
+      "ts": 1794699715946
+    },
+    "GRASSUSDT|SHORT|1794617776546": {
+      "sym": "GRASSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.512,
+      "ts": 1794699715946
+    },
+    "PLUMEUSDT|SHORT|1794646021890": {
+      "sym": "PLUMEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.302,
+      "ts": 1794699715946
+    },
+    "HUMAUSDT|SHORT|1794658599440": {
+      "sym": "HUMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.584,
+      "ts": 1794699715946
+    },
+    "ICPUSDT|SHORT|1794658599440": {
+      "sym": "ICPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.978,
+      "ts": 1794699715946
+    },
+    "NIGHTUSDT|LONG|1794660493618": {
+      "sym": "NIGHTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.041,
+      "ts": 1794699715946
+    },
+    "ZECUSDT|SHORT|1794674436816": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.986,
+      "ts": 1794699715946
+    },
+    "PENDLEUSDT|SHORT|1794674436816": {
+      "sym": "PENDLEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.289,
+      "ts": 1794699715946
+    },
+    "AIAUSDT|LONG|1794688818693": {
+      "sym": "AIAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1794699715946
     }
   },
-  "updated_at": "2026-11-14 23:40",
+  "updated_at": "2026-11-15 02:41",
   "breakevens": 0
 }
