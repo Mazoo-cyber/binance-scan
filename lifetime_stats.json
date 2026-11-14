@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 117,
-  "losses": 159,
-  "net_r": 78.274,
+  "wins": 143,
+  "losses": 162,
+  "net_r": 146.43,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -2162,8 +2162,240 @@
       "res": "L",
       "r": -1.031,
       "ts": 1794658605107
+    },
+    "1000BONKUSDT|SHORT|1794315551499": {
+      "sym": "1000BONKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.011,
+      "ts": 1794674439874
+    },
+    "STRKUSDT|SHORT|1794315551499": {
+      "sym": "STRKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.74,
+      "ts": 1794674439874
+    },
+    "ARBUSDT|SHORT|1794315551499": {
+      "sym": "ARBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.863,
+      "ts": 1794674439874
+    },
+    "SANDUSDT|SHORT|1794329499178": {
+      "sym": "SANDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.281,
+      "ts": 1794674439874
+    },
+    "MARSCOINUSDT|SHORT|1794329499178": {
+      "sym": "MARSCOINUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.521,
+      "ts": 1794674439874
+    },
+    "FILUSDT|SHORT|1794387191290": {
+      "sym": "FILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.627,
+      "ts": 1794674439874
+    },
+    "PENGUUSDT|SHORT|1794387191290": {
+      "sym": "PENGUUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.614,
+      "ts": 1794674439874
+    },
+    "B2USDT|LONG|1794488835927": {
+      "sym": "B2USDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.027,
+      "ts": 1794674439874
+    },
+    "PAXGUSDT|SHORT|1794560067045": {
+      "sym": "PAXGUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 1.989,
+      "ts": 1794674439874
+    },
+    "ORDIUSDT|SHORT|1794560067045": {
+      "sym": "ORDIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.739,
+      "ts": 1794674439874
+    },
+    "METUSDT|SHORT|1794560067045": {
+      "sym": "METUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.071,
+      "ts": 1794674439874
+    },
+    "BCHUSDT|SHORT|1794575232363": {
+      "sym": "BCHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 3.204,
+      "ts": 1794674439874
+    },
+    "1000SHIBUSDT|SHORT|1794575232363": {
+      "sym": "1000SHIBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.414,
+      "ts": 1794674439874
+    },
+    "ZAMAUSDT|SHORT|1794575232363": {
+      "sym": "ZAMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.767,
+      "ts": 1794674439874
+    },
+    "FETUSDT|SHORT|1794575232363": {
+      "sym": "FETUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.751,
+      "ts": 1794674439874
+    },
+    "LDOUSDT|SHORT|1794575232363": {
+      "sym": "LDOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.379,
+      "ts": 1794674439874
+    },
+    "XPLUSDT|SHORT|1794575232363": {
+      "sym": "XPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.787,
+      "ts": 1794674439874
+    },
+    "RENDERUSDT|SHORT|1794588875507": {
+      "sym": "RENDERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.42,
+      "ts": 1794674439874
+    },
+    "XLMUSDT|SHORT|1794588875507": {
+      "sym": "XLMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.756,
+      "ts": 1794674439874
+    },
+    "TAOUSDT|SHORT|1794588875507": {
+      "sym": "TAOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.021,
+      "ts": 1794674439874
+    },
+    "SUSDT|SHORT|1794588875507": {
+      "sym": "SUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.34,
+      "ts": 1794674439874
+    },
+    "TIAUSDT|SHORT|1794603280181": {
+      "sym": "TIAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.422,
+      "ts": 1794674439874
+    },
+    "JUPUSDT|LONG|1794617776546": {
+      "sym": "JUPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794674439874
+    },
+    "INJUSDT|LONG|1794617776546": {
+      "sym": "INJUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.027,
+      "ts": 1794674439874
+    },
+    "BNBUSDT|SHORT|1794646021890": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.085,
+      "ts": 1794674439874
+    },
+    "EIGENUSDT|SHORT|1794646021890": {
+      "sym": "EIGENUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.386,
+      "ts": 1794674439874
+    },
+    "ETCUSDT|SHORT|1794646021890": {
+      "sym": "ETCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.18,
+      "ts": 1794674439874
+    },
+    "WIFUSDT|SHORT|1794646021890": {
+      "sym": "WIFUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.27,
+      "ts": 1794674439874
+    },
+    "BTCUSDT|SHORT|1794646021890": {
+      "sym": "BTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.597,
+      "ts": 1794674439874
     }
   },
-  "updated_at": "2026-11-14 15:48",
+  "updated_at": "2026-11-14 19:40",
   "breakevens": 0
 }
