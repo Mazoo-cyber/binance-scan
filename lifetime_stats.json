@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 99,
-  "losses": 155,
-  "net_r": 40.68,
+  "wins": 101,
+  "losses": 156,
+  "net_r": 44.125,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -1986,8 +1986,32 @@
       "res": "W",
       "r": 2.469,
       "ts": 1794603283625
+    },
+    "RAYSOLUSDT|SHORT|1794416270272": {
+      "sym": "RAYSOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.163,
+      "ts": 1794615468653
+    },
+    "ICPUSDT|LONG|1794488835927": {
+      "sym": "ICPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.308,
+      "ts": 1794615468653
+    },
+    "HANAUSDT|LONG|1794575232363": {
+      "sym": "HANAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.026,
+      "ts": 1794615468653
     }
   },
-  "updated_at": "2026-11-13 23:54",
+  "updated_at": "2026-11-14 03:17",
   "breakevens": 0
 }
