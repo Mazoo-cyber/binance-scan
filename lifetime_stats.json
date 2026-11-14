@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 114,
-  "losses": 158,
-  "net_r": 73.002,
+  "wins": 117,
+  "losses": 159,
+  "net_r": 78.274,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -2130,8 +2130,40 @@
       "res": "L",
       "r": -1.034,
       "ts": 1794646026766
+    },
+    "BRUSDT|SHORT|1794416270272": {
+      "sym": "BRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.849,
+      "ts": 1794658605107
+    },
+    "WLDUSDT|SHORT|1794560067045": {
+      "sym": "WLDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.029,
+      "ts": 1794658605107
+    },
+    "APRUSDT|SHORT|1794575232363": {
+      "sym": "APRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.425,
+      "ts": 1794658605107
+    },
+    "BMTUSDT|SHORT|1794646021890": {
+      "sym": "BMTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1794658605107
     }
   },
-  "updated_at": "2026-11-14 11:47",
+  "updated_at": "2026-11-14 15:16",
   "breakevens": 0
 }
