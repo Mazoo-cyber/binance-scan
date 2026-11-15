@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 166,
+  "wins": 167,
   "losses": 168,
-  "net_r": 197.403,
+  "net_r": 199.625,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -2626,8 +2626,16 @@
       "res": "L",
       "r": -1.029,
       "ts": 1794699715946
+    },
+    "MONUSDT|SHORT|1794575232363": {
+      "sym": "MONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.222,
+      "ts": 1794701736459
     }
   },
-  "updated_at": "2026-11-15 02:41",
+  "updated_at": "2026-11-15 03:15",
   "breakevens": 0
 }
