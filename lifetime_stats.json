@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 174,
-  "losses": 189,
-  "net_r": 190.875,
+  "losses": 192,
+  "net_r": 187.743,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -2858,8 +2858,32 @@
       "res": "L",
       "r": -1.024,
       "ts": 1794746988864
+    },
+    "TAOUSDT|SHORT|1794732587282": {
+      "sym": "TAOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1794760946419
+    },
+    "SOLUSDT|SHORT|1794732587282": {
+      "sym": "SOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1794760946419
+    },
+    "QNTUSDT|SHORT|1794732587282": {
+      "sym": "QNTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1794760946419
     }
   },
-  "updated_at": "2026-11-15 15:49",
+  "updated_at": "2026-11-15 19:42",
   "breakevens": 0
 }
