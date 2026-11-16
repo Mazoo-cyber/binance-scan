@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 174,
-  "losses": 201,
-  "net_r": 178.147,
+  "wins": 177,
+  "losses": 203,
+  "net_r": 180.994,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -2954,8 +2954,48 @@
       "res": "L",
       "r": -1.05,
       "ts": 1794789127761
+    },
+    "BEAMXUSDT|SHORT|1794646021890": {
+      "sym": "BEAMXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.525,
+      "ts": 1794824021493
+    },
+    "0GUSDT|SHORT|1794704350020": {
+      "sym": "0GUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.528,
+      "ts": 1794824021493
+    },
+    "SKYAIUSDT|LONG|1794732587282": {
+      "sym": "SKYAIUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1794824021493
+    },
+    "ALLOUSDT|LONG|1794732587282": {
+      "sym": "ALLOUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.018,
+      "ts": 1794824021493
+    },
+    "QUSDT|SHORT|1794765256971": {
+      "sym": "QUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.842,
+      "ts": 1794824021493
     }
   },
-  "updated_at": "2026-11-16 04:18",
+  "updated_at": "2026-11-16 13:13",
   "breakevens": 0
 }
