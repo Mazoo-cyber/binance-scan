@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 186,
-  "losses": 211,
-  "net_r": 188.644,
+  "wins": 187,
+  "losses": 219,
+  "net_r": 181.139,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3130,8 +3130,80 @@
       "res": "L",
       "r": -1.024,
       "ts": 1794849220081
+    },
+    "GPSUSDT|SHORT|1794746984577": {
+      "sym": "GPSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1794862321560
+    },
+    "ATOMUSDT|SHORT|1794824018238": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.055,
+      "ts": 1794862321560
+    },
+    "HYPEUSDT|SHORT|1794824018238": {
+      "sym": "HYPEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.772,
+      "ts": 1794862321560
+    },
+    "1000PEPEUSDT|SHORT|1794824018238": {
+      "sym": "1000PEPEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1794862321560
+    },
+    "TACUSDT|LONG|1794841328232": {
+      "sym": "TACUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.019,
+      "ts": 1794862321560
+    },
+    "LITUSDT|SHORT|1794849215255": {
+      "sym": "LITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1794862321560
+    },
+    "PIEVERSEUSDT|LONG|1794849215255": {
+      "sym": "PIEVERSEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1794862321560
+    },
+    "BEAMXUSDT|SHORT|1794849215255": {
+      "sym": "BEAMXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1794862321560
+    },
+    "BANANAS31USDT|SHORT|1794849215255": {
+      "sym": "BANANAS31USDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1794862321560
     }
   },
-  "updated_at": "2026-11-16 20:13",
+  "updated_at": "2026-11-16 23:52",
   "breakevens": 0
 }
