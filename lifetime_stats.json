@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 183,
-  "losses": 209,
-  "net_r": 182.316,
+  "wins": 186,
+  "losses": 211,
+  "net_r": 188.644,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3090,8 +3090,48 @@
       "res": "L",
       "r": -1.046,
       "ts": 1794841333291
+    },
+    "APRUSDT|SHORT|1794701733232": {
+      "sym": "APRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.706,
+      "ts": 1794849220081
+    },
+    "MONUSDT|SHORT|1794732587282": {
+      "sym": "MONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.525,
+      "ts": 1794849220081
+    },
+    "PIEVERSEUSDT|LONG|1794760942936": {
+      "sym": "PIEVERSEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.145,
+      "ts": 1794849220081
+    },
+    "ONUSDT|SHORT|1794824018238": {
+      "sym": "ONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794849220081
+    },
+    "AINUSDT|SHORT|1794841328232": {
+      "sym": "AINUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794849220081
     }
   },
-  "updated_at": "2026-11-16 18:02",
+  "updated_at": "2026-11-16 20:13",
   "breakevens": 0
 }
