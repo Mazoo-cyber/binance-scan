@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 192,
-  "losses": 239,
-  "net_r": 169.733,
+  "wins": 197,
+  "losses": 249,
+  "net_r": 170.117,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3402,8 +3402,128 @@
       "res": "L",
       "r": -1.051,
       "ts": 1794920654962
+    },
+    "PENGUUSDT|SHORT|1794732587282": {
+      "sym": "PENGUUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.27,
+      "ts": 1794934950735
+    },
+    "FILUSDT|SHORT|1794732587282": {
+      "sym": "FILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.163,
+      "ts": 1794934950735
+    },
+    "SEIUSDT|SHORT|1794824018238": {
+      "sym": "SEIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.794,
+      "ts": 1794934950735
+    },
+    "AEROUSDT|SHORT|1794905787750": {
+      "sym": "AEROUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1794934950735
+    },
+    "WLDUSDT|SHORT|1794905787750": {
+      "sym": "WLDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.152,
+      "ts": 1794934950735
+    },
+    "XMRUSDT|SHORT|1794905787750": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1794934950735
+    },
+    "HUMAUSDT|SHORT|1794905787750": {
+      "sym": "HUMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.422,
+      "ts": 1794934950735
+    },
+    "NIGHTUSDT|LONG|1794920650918": {
+      "sym": "NIGHTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1794934950735
+    },
+    "PHAUSDT|SHORT|1794920650918": {
+      "sym": "PHAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.022,
+      "ts": 1794934950735
+    },
+    "CAPUSDT|LONG|1794920650918": {
+      "sym": "CAPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1794934950735
+    },
+    "SUIUSDT|LONG|1794920650918": {
+      "sym": "SUIUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.052,
+      "ts": 1794934950735
+    },
+    "TRUMPUSDT|LONG|1794920650918": {
+      "sym": "TRUMPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1794934950735
+    },
+    "SOLUSDT|LONG|1794920650918": {
+      "sym": "SOLUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.055,
+      "ts": 1794934950735
+    },
+    "VVVUSDT|LONG|1794920650918": {
+      "sym": "VVVUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1794934950735
+    },
+    "FETUSDT|LONG|1794920650918": {
+      "sym": "FETUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1794934950735
     }
   },
-  "updated_at": "2026-11-17 16:04",
+  "updated_at": "2026-11-17 20:02",
   "breakevens": 0
 }
