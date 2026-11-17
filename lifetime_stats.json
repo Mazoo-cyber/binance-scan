@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 189,
-  "losses": 232,
-  "net_r": 171.388,
+  "wins": 192,
+  "losses": 239,
+  "net_r": 169.733,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3322,8 +3322,88 @@
       "res": "L",
       "r": -1.043,
       "ts": 1794905793808
+    },
+    "TRUMPUSDT|SHORT|1794732587282": {
+      "sym": "TRUMPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1794920654962
+    },
+    "MAGMAUSDT|SHORT|1794732587282": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.74,
+      "ts": 1794920654962
+    },
+    "ALLOUSDT|SHORT|1794760942936": {
+      "sym": "ALLOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.147,
+      "ts": 1794920654962
+    },
+    "SUIUSDT|SHORT|1794824018238": {
+      "sym": "SUIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.742,
+      "ts": 1794920654962
+    },
+    "JUPUSDT|SHORT|1794862315363": {
+      "sym": "JUPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1794920654962
+    },
+    "ZECUSDT|SHORT|1794877241335": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1794920654962
+    },
+    "UNIUSDT|SHORT|1794877241335": {
+      "sym": "UNIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1794920654962
+    },
+    "PHAUSDT|SHORT|1794905787750": {
+      "sym": "PHAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1794920654962
+    },
+    "INJUSDT|SHORT|1794905787750": {
+      "sym": "INJUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1794920654962
+    },
+    "ZAMAUSDT|SHORT|1794905787750": {
+      "sym": "ZAMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.051,
+      "ts": 1794920654962
     }
   },
-  "updated_at": "2026-11-17 11:56",
+  "updated_at": "2026-11-17 16:04",
   "breakevens": 0
 }
