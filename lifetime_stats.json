@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 197,
-  "losses": 249,
-  "net_r": 170.117,
+  "wins": 198,
+  "losses": 254,
+  "net_r": 165.899,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3522,8 +3522,56 @@
       "res": "L",
       "r": -1.049,
       "ts": 1794934950735
+    },
+    "NEARUSDT|SHORT|1794824018238": {
+      "sym": "NEARUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.004,
+      "ts": 1794948944273
+    },
+    "FILUSDT|SHORT|1794934946323": {
+      "sym": "FILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1794948944273
+    },
+    "OPUSDT|SHORT|1794934946323": {
+      "sym": "OPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1794948944273
+    },
+    "PENGUUSDT|SHORT|1794934946323": {
+      "sym": "PENGUUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1794948944273
+    },
+    "1000SHIBUSDT|SHORT|1794934946323": {
+      "sym": "1000SHIBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.061,
+      "ts": 1794948944273
+    },
+    "1000LUNCUSDT|SHORT|1794934946323": {
+      "sym": "1000LUNCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.027,
+      "ts": 1794948944273
     }
   },
-  "updated_at": "2026-11-17 20:02",
+  "updated_at": "2026-11-17 23:55",
   "breakevens": 0
 }
