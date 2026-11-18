@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 212,
-  "losses": 291,
-  "net_r": 153.387,
+  "wins": 214,
+  "losses": 294,
+  "net_r": 155.05,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3978,8 +3978,48 @@
       "res": "L",
       "r": -1.021,
       "ts": 1795021491132
+    },
+    "PAXGUSDT|SHORT|1794849215255": {
+      "sym": "PAXGUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.948,
+      "ts": 1795035346973
+    },
+    "GALAUSDT|SHORT|1794905787750": {
+      "sym": "GALAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.808,
+      "ts": 1795035346973
+    },
+    "BLURUSDT|SHORT|1794964103544": {
+      "sym": "BLURUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.02,
+      "ts": 1795035346973
+    },
+    "ZECUSDT|LONG|1795007420499": {
+      "sym": "ZECUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.041,
+      "ts": 1795035346973
+    },
+    "JUPUSDT|SHORT|1795021487506": {
+      "sym": "JUPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795035346973
     }
   },
-  "updated_at": "2026-11-18 20:04",
+  "updated_at": "2026-11-18 23:55",
   "breakevens": 0
 }
