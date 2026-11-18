@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 206,
-  "losses": 282,
-  "net_r": 147.909,
+  "losses": 284,
+  "net_r": 145.82,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3858,8 +3858,24 @@
       "res": "L",
       "r": -1.024,
       "ts": 1794992355449
+    },
+    "ZKUSDT|SHORT|1794732587282": {
+      "sym": "ZKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1795007425057
+    },
+    "XPLUSDT|SHORT|1794992349911": {
+      "sym": "XPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1795007425057
     }
   },
-  "updated_at": "2026-11-18 11:59",
+  "updated_at": "2026-11-18 16:10",
   "breakevens": 0
 }
