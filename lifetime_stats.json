@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 206,
-  "losses": 274,
-  "net_r": 156.242,
+  "losses": 282,
+  "net_r": 147.909,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -3794,8 +3794,72 @@
       "res": "L",
       "r": -1.06,
       "ts": 1794961911300
+    },
+    "KGENUSDT|SHORT|1794704350020": {
+      "sym": "KGENUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1794992355449
+    },
+    "IRYSUSDT|SHORT|1794732587282": {
+      "sym": "IRYSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1794992355449
+    },
+    "ETCUSDT|SHORT|1794732587282": {
+      "sym": "ETCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.052,
+      "ts": 1794992355449
+    },
+    "TRXUSDT|SHORT|1794849215255": {
+      "sym": "TRXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.106,
+      "ts": 1794992355449
+    },
+    "BERAUSDT|SHORT|1794934946323": {
+      "sym": "BERAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.035,
+      "ts": 1794992355449
+    },
+    "ALLOUSDT|SHORT|1794934946323": {
+      "sym": "ALLOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.033,
+      "ts": 1794992355449
+    },
+    "ERAUSDT|SHORT|1794948940408": {
+      "sym": "ERAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794992355449
+    },
+    "MAGMAUSDT|SHORT|1794964103544": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1794992355449
     }
   },
-  "updated_at": "2026-11-18 04:08",
+  "updated_at": "2026-11-18 11:59",
   "breakevens": 0
 }
