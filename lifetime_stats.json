@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 223,
-  "losses": 299,
-  "net_r": 169.225,
+  "wins": 231,
+  "losses": 312,
+  "net_r": 169.304,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -4130,8 +4130,176 @@
       "res": "L",
       "r": -1.18,
       "ts": 1795050377170
+    },
+    "BTRUSDT|SHORT|1794746984577": {
+      "sym": "BTRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.027,
+      "ts": 1795078739383
+    },
+    "ICPUSDT|SHORT|1794849215255": {
+      "sym": "ICPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.151,
+      "ts": 1795078739383
+    },
+    "BIRBUSDT|SHORT|1794862315363": {
+      "sym": "BIRBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.889,
+      "ts": 1795078739383
+    },
+    "WIFUSDT|SHORT|1794862315363": {
+      "sym": "WIFUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.936,
+      "ts": 1795078739383
+    },
+    "QUSDT|SHORT|1794905787750": {
+      "sym": "QUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.022,
+      "ts": 1795078739383
+    },
+    "STRKUSDT|SHORT|1794905787750": {
+      "sym": "STRKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.079,
+      "ts": 1795078739383
+    },
+    "INJUSDT|SHORT|1794948940408": {
+      "sym": "INJUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.266,
+      "ts": 1795078739383
+    },
+    "TLMUSDT|SHORT|1794992349911": {
+      "sym": "TLMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.033,
+      "ts": 1795078739383
+    },
+    "1000LUNCUSDT|LONG|1794992349911": {
+      "sym": "1000LUNCUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.56,
+      "ts": 1795078739383
+    },
+    "TAOUSDT|SHORT|1794992349911": {
+      "sym": "TAOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.08,
+      "ts": 1795078739383
+    },
+    "TRXUSDT|LONG|1795007420499": {
+      "sym": "TRXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.592,
+      "ts": 1795078739383
+    },
+    "PUMPUSDT|SHORT|1795021487506": {
+      "sym": "PUMPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1795078739383
+    },
+    "RENDERUSDT|SHORT|1795021487506": {
+      "sym": "RENDERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1795078739383
+    },
+    "ERAUSDT|SHORT|1795021487506": {
+      "sym": "ERAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1795078739383
+    },
+    "BNBUSDT|SHORT|1795035342626": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.075,
+      "ts": 1795078739383
+    },
+    "ETHFIUSDT|SHORT|1795035342626": {
+      "sym": "ETHFIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1795078739383
+    },
+    "JUPUSDT|SHORT|1795035342626": {
+      "sym": "JUPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.022,
+      "ts": 1795078739383
+    },
+    "ZECUSDT|SHORT|1795050373631": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795078739383
+    },
+    "INITUSDT|SHORT|1795050373631": {
+      "sym": "INITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.026,
+      "ts": 1795078739383
+    },
+    "CROSSUSDT|LONG|1795050373631": {
+      "sym": "CROSSUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1795078739383
+    },
+    "IDOLUSDT|SHORT|1795050373631": {
+      "sym": "IDOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1795078739383
     }
   },
-  "updated_at": "2026-11-19 04:06",
+  "updated_at": "2026-11-19 11:58",
   "breakevens": 0
 }
