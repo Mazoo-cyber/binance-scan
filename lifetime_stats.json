@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 231,
-  "losses": 312,
-  "net_r": 169.304,
+  "wins": 235,
+  "losses": 324,
+  "net_r": 162.005,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -4298,8 +4298,136 @@
       "res": "L",
       "r": -1.025,
       "ts": 1795078739383
+    },
+    "DODOXUSDT|LONG|1794862315363": {
+      "sym": "DODOXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.035,
+      "ts": 1795094081550
+    },
+    "CAPUSDT|SHORT|1794862315363": {
+      "sym": "CAPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.212,
+      "ts": 1795094081550
+    },
+    "BCHUSDT|SHORT|1794905787750": {
+      "sym": "BCHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.99,
+      "ts": 1795094081550
+    },
+    "1000BONKUSDT|SHORT|1794948940408": {
+      "sym": "1000BONKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.101,
+      "ts": 1795094081550
+    },
+    "DOGEUSDT|SHORT|1795007420499": {
+      "sym": "DOGEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.867,
+      "ts": 1795094081550
+    },
+    "BTCUSDT|SHORT|1795021487506": {
+      "sym": "BTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.07,
+      "ts": 1795094081550
+    },
+    "HEIUSDT|SHORT|1795021487506": {
+      "sym": "HEIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.036,
+      "ts": 1795094081550
+    },
+    "FILUSDT|SHORT|1795035342626": {
+      "sym": "FILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1795094081550
+    },
+    "ONUSDT|SHORT|1795050373631": {
+      "sym": "ONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1795094081550
+    },
+    "PYTHUSDT|SHORT|1795050373631": {
+      "sym": "PYTHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1795094081550
+    },
+    "RAVEUSDT|SHORT|1795050373631": {
+      "sym": "RAVEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795094081550
+    },
+    "ARIAUSDT|LONG|1795078735066": {
+      "sym": "ARIAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1795094081550
+    },
+    "RIVERUSDT|SHORT|1795078735066": {
+      "sym": "RIVERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1795094081550
+    },
+    "MONUSDT|SHORT|1795078735066": {
+      "sym": "MONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795094081550
+    },
+    "1000PEPEUSDT|SHORT|1795078735066": {
+      "sym": "1000PEPEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.05,
+      "ts": 1795094081550
+    },
+    "FHEUSDT|SHORT|1795078735066": {
+      "sym": "FHEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.02,
+      "ts": 1795094081550
     }
   },
-  "updated_at": "2026-11-19 11:58",
+  "updated_at": "2026-11-19 16:14",
   "breakevens": 0
 }
