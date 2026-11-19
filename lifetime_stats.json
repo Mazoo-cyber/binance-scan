@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 235,
-  "losses": 324,
-  "net_r": 162.005,
+  "wins": 237,
+  "losses": 330,
+  "net_r": 158.429,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -4426,8 +4426,72 @@
       "res": "L",
       "r": -1.02,
       "ts": 1795094081550
+    },
+    "SOLUSDT|SHORT|1794964103544": {
+      "sym": "SOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.808,
+      "ts": 1795107968193
+    },
+    "HBARUSDT|SHORT|1795035342626": {
+      "sym": "HBARUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.057,
+      "ts": 1795107968193
+    },
+    "AAVEUSDT|SHORT|1795078735066": {
+      "sym": "AAVEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.885,
+      "ts": 1795107968193
+    },
+    "ZKPUSDT|SHORT|1795078735066": {
+      "sym": "ZKPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795107968193
+    },
+    "XRPUSDT|LONG|1795078735066": {
+      "sym": "XRPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.06,
+      "ts": 1795107968193
+    },
+    "JUPUSDT|LONG|1795078735066": {
+      "sym": "JUPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795107968193
+    },
+    "ZECUSDT|LONG|1795094077263": {
+      "sym": "ZECUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795107968193
+    },
+    "FHEUSDT|SHORT|1795094077263": {
+      "sym": "FHEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795107968193
     }
   },
-  "updated_at": "2026-11-19 16:14",
+  "updated_at": "2026-11-19 20:06",
   "breakevens": 0
 }
