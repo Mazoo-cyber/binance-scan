@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 267,
-  "losses": 345,
-  "net_r": 209.082,
+  "wins": 269,
+  "losses": 346,
+  "net_r": 213.863,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -4850,8 +4850,32 @@
       "res": "L",
       "r": -1.027,
       "ts": 1795165115194
+    },
+    "LITUSDT|SHORT|1794877241335": {
+      "sym": "LITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.203,
+      "ts": 1795180122732
+    },
+    "INJUSDT|SHORT|1795107965024": {
+      "sym": "INJUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.615,
+      "ts": 1795180122732
+    },
+    "ONEUSDT|SHORT|1795165110381": {
+      "sym": "ONEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1795180122732
     }
   },
-  "updated_at": "2026-11-20 11:58",
+  "updated_at": "2026-11-20 16:08",
   "breakevens": 0
 }
