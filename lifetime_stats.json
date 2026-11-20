@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 241,
-  "losses": 337,
-  "net_r": 159.278,
+  "wins": 247,
+  "losses": 341,
+  "net_r": 168.535,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -4578,8 +4578,88 @@
       "res": "L",
       "r": -1.052,
       "ts": 1795121728968
+    },
+    "LTCUSDT|SHORT|1794732587282": {
+      "sym": "LTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.124,
+      "ts": 1795134355757
+    },
+    "DASHUSDT|SHORT|1794905787750": {
+      "sym": "DASHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.113,
+      "ts": 1795134355757
+    },
+    "SUIUSDT|SHORT|1794948940408": {
+      "sym": "SUIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.216,
+      "ts": 1795134355757
+    },
+    "ARBUSDT|SHORT|1795021487506": {
+      "sym": "ARBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.036,
+      "ts": 1795134355757
+    },
+    "INJUSDT|LONG|1795078735066": {
+      "sym": "INJUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795134355757
+    },
+    "BTCUSDT|SHORT|1795094077263": {
+      "sym": "BTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.107,
+      "ts": 1795134355757
+    },
+    "ZILUSDT|SHORT|1795107965024": {
+      "sym": "ZILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.026,
+      "ts": 1795134355757
+    },
+    "ZECUSDT|SHORT|1795107965024": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.784,
+      "ts": 1795134355757
+    },
+    "DODOXUSDT|LONG|1795121725511": {
+      "sym": "DODOXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.039,
+      "ts": 1795134355757
+    },
+    "HUMAUSDT|SHORT|1795121725511": {
+      "sym": "HUMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.027,
+      "ts": 1795134355757
     }
   },
-  "updated_at": "2026-11-19 23:55",
+  "updated_at": "2026-11-20 03:25",
   "breakevens": 0
 }
