@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 306,
-  "losses": 351,
-  "net_r": 307.772,
+  "wins": 310,
+  "losses": 352,
+  "net_r": 317.529,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -5210,8 +5210,48 @@
       "res": "L",
       "r": -1.032,
       "ts": 1795192799754
+    },
+    "WLDUSDT|SHORT|1795078735066": {
+      "sym": "WLDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.933,
+      "ts": 1795207938836
+    },
+    "IDOLUSDT|LONG|1795078735066": {
+      "sym": "IDOLUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.207,
+      "ts": 1795207938836
+    },
+    "AAVEUSDT|SHORT|1795107965024": {
+      "sym": "AAVEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.241,
+      "ts": 1795207938836
+    },
+    "CTUSDT|LONG|1795121725511": {
+      "sym": "CTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.022,
+      "ts": 1795207938836
+    },
+    "FARTCOINUSDT|SHORT|1795165110381": {
+      "sym": "FARTCOINUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.399,
+      "ts": 1795207938836
     }
   },
-  "updated_at": "2026-11-20 19:59",
+  "updated_at": "2026-11-20 23:52",
   "breakevens": 0
 }
