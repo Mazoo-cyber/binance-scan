@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 314,
-  "losses": 357,
-  "net_r": 320.287,
+  "losses": 358,
+  "net_r": 319.264,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -5322,8 +5322,16 @@
       "res": "L",
       "r": -1.047,
       "ts": 1795221029858
+    },
+    "PHAROSUSDT|LONG|1795221027170": {
+      "sym": "PHAROSUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1795223068683
     }
   },
-  "updated_at": "2026-11-21 03:30",
+  "updated_at": "2026-11-21 04:04",
   "breakevens": 0
 }
