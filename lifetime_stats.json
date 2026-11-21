@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 310,
-  "losses": 352,
-  "net_r": 317.529,
+  "wins": 314,
+  "losses": 357,
+  "net_r": 320.287,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -5250,8 +5250,80 @@
       "res": "W",
       "r": 2.399,
       "ts": 1795207938836
+    },
+    "LINKUSDT|SHORT|1795078735066": {
+      "sym": "LINKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.588,
+      "ts": 1795221029858
+    },
+    "ZECUSDT|SHORT|1795136363415": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.881,
+      "ts": 1795221029858
+    },
+    "LTCUSDT|SHORT|1795180117506": {
+      "sym": "LTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.7,
+      "ts": 1795221029858
+    },
+    "XPLUSDT|SHORT|1795180117506": {
+      "sym": "XPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795221029858
+    },
+    "CARVUSDT|SHORT|1795192797667": {
+      "sym": "CARVUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1795221029858
+    },
+    "QNTUSDT|SHORT|1795192797667": {
+      "sym": "QNTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.779,
+      "ts": 1795221029858
+    },
+    "HMSTRUSDT|LONG|1795193942701": {
+      "sym": "HMSTRUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1795221029858
+    },
+    "HMSTRUSDT|SHORT|1795207936555": {
+      "sym": "HMSTRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1795221029858
+    },
+    "STEEMUSDT|SHORT|1795207936555": {
+      "sym": "STEEMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1795221029858
     }
   },
-  "updated_at": "2026-11-20 23:52",
+  "updated_at": "2026-11-21 03:30",
   "breakevens": 0
 }
