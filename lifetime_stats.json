@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 331,
-  "losses": 385,
-  "net_r": 327.776,
+  "wins": 337,
+  "losses": 413,
+  "net_r": 307.828,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -5682,8 +5682,280 @@
       "res": "L",
       "r": -1.044,
       "ts": 1795265627666
+    },
+    "MAGMAUSDT|SHORT|1795007420499": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.097,
+      "ts": 1795279571891
+    },
+    "RIVERUSDT|SHORT|1795165110381": {
+      "sym": "RIVERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.102,
+      "ts": 1795279571891
+    },
+    "UAIUSDT|SHORT|1795180117506": {
+      "sym": "UAIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.34,
+      "ts": 1795279571891
+    },
+    "SYRUPUSDT|SHORT|1795192797667": {
+      "sym": "SYRUPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.889,
+      "ts": 1795279571891
+    },
+    "ONEUSDT|SHORT|1795193942701": {
+      "sym": "ONEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.002,
+      "ts": 1795279571891
+    },
+    "AIGENSYNUSDT|SHORT|1795221027170": {
+      "sym": "AIGENSYNUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.812,
+      "ts": 1795279571891
+    },
+    "QNTUSDT|SHORT|1795250980137": {
+      "sym": "QNTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1795279571891
+    },
+    "ONDOUSDT|SHORT|1795250980137": {
+      "sym": "ONDOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795279571891
+    },
+    "HYPEUSDT|SHORT|1795250980137": {
+      "sym": "HYPEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795279571891
+    },
+    "BERAUSDT|SHORT|1795250980137": {
+      "sym": "BERAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.039,
+      "ts": 1795279571891
+    },
+    "ENAUSDT|SHORT|1795250980137": {
+      "sym": "ENAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.036,
+      "ts": 1795279571891
+    },
+    "STRKUSDT|SHORT|1795250980137": {
+      "sym": "STRKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1795279571891
+    },
+    "ORDIUSDT|SHORT|1795250980137": {
+      "sym": "ORDIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795279571891
+    },
+    "BNBUSDT|SHORT|1795250980137": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.059,
+      "ts": 1795279571891
+    },
+    "ARBUSDT|SHORT|1795250980137": {
+      "sym": "ARBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795279571891
+    },
+    "LINKUSDT|SHORT|1795250980137": {
+      "sym": "LINKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1795279571891
+    },
+    "WLDUSDT|SHORT|1795250980137": {
+      "sym": "WLDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1795279571891
+    },
+    "1000FLOKIUSDT|SHORT|1795250980137": {
+      "sym": "1000FLOKIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1795279571891
+    },
+    "SANDUSDT|SHORT|1795250980137": {
+      "sym": "SANDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795279571891
+    },
+    "TIAUSDT|SHORT|1795250980137": {
+      "sym": "TIAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.041,
+      "ts": 1795279571891
+    },
+    "CAKEUSDT|SHORT|1795250980137": {
+      "sym": "CAKEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.051,
+      "ts": 1795279571891
+    },
+    "PUMPUSDT|SHORT|1795250980137": {
+      "sym": "PUMPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795279571891
+    },
+    "DASHUSDT|SHORT|1795250980137": {
+      "sym": "DASHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795279571891
+    },
+    "GRASSUSDT|SHORT|1795250980137": {
+      "sym": "GRASSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.036,
+      "ts": 1795279571891
+    },
+    "XPLUSDT|SHORT|1795250980137": {
+      "sym": "XPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.045,
+      "ts": 1795279571891
+    },
+    "BCHUSDT|SHORT|1795265624693": {
+      "sym": "BCHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1795279571891
+    },
+    "ZROUSDT|SHORT|1795265624693": {
+      "sym": "ZROUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795279571891
+    },
+    "VIRTUALUSDT|SHORT|1795265624693": {
+      "sym": "VIRTUALUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795279571891
+    },
+    "MONUSDT|SHORT|1795265624693": {
+      "sym": "MONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1795279571891
+    },
+    "SOLUSDT|SHORT|1795265624693": {
+      "sym": "SOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.05,
+      "ts": 1795279571891
+    },
+    "TAOUSDT|SHORT|1795265624693": {
+      "sym": "TAOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795279571891
+    },
+    "ARUSDT|SHORT|1795265624693": {
+      "sym": "ARUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.041,
+      "ts": 1795279571891
+    },
+    "CAPUSDT|LONG|1795265624693": {
+      "sym": "CAPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.035,
+      "ts": 1795279571891
+    },
+    "LSKUSDT|SHORT|1795265624693": {
+      "sym": "LSKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795279571891
     }
   },
-  "updated_at": "2026-11-21 15:53",
+  "updated_at": "2026-11-21 19:46",
   "breakevens": 0
 }
