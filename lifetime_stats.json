@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 337,
-  "losses": 413,
-  "net_r": 307.828,
+  "wins": 338,
+  "losses": 417,
+  "net_r": 304.541,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -5954,8 +5954,48 @@
       "res": "L",
       "r": -1.046,
       "ts": 1795279571891
+    },
+    "RAVEUSDT|SHORT|1795165110381": {
+      "sym": "RAVEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.852,
+      "ts": 1795293791222
+    },
+    "LITUSDT|SHORT|1795250980137": {
+      "sym": "LITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795293791222
+    },
+    "XMRUSDT|SHORT|1795265624693": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795293791222
+    },
+    "BARDUSDT|SHORT|1795265624693": {
+      "sym": "BARDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1795293791222
+    },
+    "MAGMAUSDT|SHORT|1795279567518": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795293791222
     }
   },
-  "updated_at": "2026-11-21 19:46",
+  "updated_at": "2026-11-21 23:43",
   "breakevens": 0
 }
