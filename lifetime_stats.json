@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 344,
-  "losses": 454,
-  "net_r": 276.168,
+  "losses": 457,
+  "net_r": 273.046,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6338,8 +6338,32 @@
       "res": "L",
       "r": -1.043,
       "ts": 1795351932519
+    },
+    "BEATUSDT|SHORT|1795279567518": {
+      "sym": "BEATUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795365958050
+    },
+    "ETHFIUSDT|SHORT|1795337383086": {
+      "sym": "ETHFIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795365958050
+    },
+    "ARBUSDT|SHORT|1795337383086": {
+      "sym": "ARBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1795365958050
     }
   },
-  "updated_at": "2026-11-22 15:52",
+  "updated_at": "2026-11-22 19:45",
   "breakevens": 0
 }
