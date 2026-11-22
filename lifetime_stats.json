@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 344,
-  "losses": 457,
-  "net_r": 273.046,
+  "wins": 346,
+  "losses": 459,
+  "net_r": 275.483,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6362,8 +6362,40 @@
       "res": "L",
       "r": -1.047,
       "ts": 1795365958050
+    },
+    "PHAUSDT|SHORT|1794934946323": {
+      "sym": "PHAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.445,
+      "ts": 1795380361147
+    },
+    "NIGHTUSDT|LONG|1795337383086": {
+      "sym": "NIGHTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.071,
+      "ts": 1795380361147
+    },
+    "AEROUSDT|SHORT|1795351928349": {
+      "sym": "AEROUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1795380361147
+    },
+    "PUMPUSDT|SHORT|1795351928349": {
+      "sym": "PUMPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1795380361147
     }
   },
-  "updated_at": "2026-11-22 19:45",
+  "updated_at": "2026-11-22 23:46",
   "breakevens": 0
 }
