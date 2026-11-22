@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 338,
-  "losses": 419,
-  "net_r": 302.496,
+  "losses": 420,
+  "net_r": 301.468,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6010,8 +6010,16 @@
       "res": "L",
       "r": -1.021,
       "ts": 1795306668270
+    },
+    "ERAUSDT|SHORT|1795207936555": {
+      "sym": "ERAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.028,
+      "ts": 1795309210748
     }
   },
-  "updated_at": "2026-11-22 03:17",
+  "updated_at": "2026-11-22 04:00",
   "breakevens": 0
 }
