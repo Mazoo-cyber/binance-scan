@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 338,
-  "losses": 420,
-  "net_r": 301.468,
+  "wins": 340,
+  "losses": 429,
+  "net_r": 296.501,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6018,8 +6018,96 @@
       "res": "L",
       "r": -1.028,
       "ts": 1795309210748
+    },
+    "TACUSDT|LONG|1794964103544": {
+      "sym": "TACUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.496,
+      "ts": 1795337387216
+    },
+    "PIEVERSEUSDT|LONG|1795223065225": {
+      "sym": "PIEVERSEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.88,
+      "ts": 1795337387216
+    },
+    "GIGGLEUSDT|SHORT|1795265624693": {
+      "sym": "GIGGLEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795337387216
+    },
+    "AEROUSDT|SHORT|1795265624693": {
+      "sym": "AEROUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795337387216
+    },
+    "DASHUSDT|SHORT|1795279567518": {
+      "sym": "DASHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795337387216
+    },
+    "CTUSDT|LONG|1795279567518": {
+      "sym": "CTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795337387216
+    },
+    "MEGAUSDT|LONG|1795279567518": {
+      "sym": "MEGAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795337387216
+    },
+    "TAOUSDT|SHORT|1795293787154": {
+      "sym": "TAOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795337387216
+    },
+    "NAORISUSDT|LONG|1795293787154": {
+      "sym": "NAORISUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1795337387216
+    },
+    "DODOXUSDT|LONG|1795309207520": {
+      "sym": "DODOXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1795337387216
+    },
+    "RENDERUSDT|SHORT|1795309207520": {
+      "sym": "RENDERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.045,
+      "ts": 1795337387216
     }
   },
-  "updated_at": "2026-11-22 04:00",
+  "updated_at": "2026-11-22 11:49",
   "breakevens": 0
 }
