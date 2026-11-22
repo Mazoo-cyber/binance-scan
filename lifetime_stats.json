@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 338,
-  "losses": 417,
-  "net_r": 304.541,
+  "losses": 419,
+  "net_r": 302.496,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -5994,8 +5994,24 @@
       "res": "L",
       "r": -1.032,
       "ts": 1795293791222
+    },
+    "INITUSDT|SHORT|1795207936555": {
+      "sym": "INITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1795306668270
+    },
+    "SIRENUSDT|LONG|1795293787154": {
+      "sym": "SIRENUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1795306668270
     }
   },
-  "updated_at": "2026-11-21 23:43",
+  "updated_at": "2026-11-22 03:17",
   "breakevens": 0
 }
