@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 340,
-  "losses": 429,
-  "net_r": 296.501,
+  "wins": 344,
+  "losses": 454,
+  "net_r": 276.168,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6106,8 +6106,240 @@
       "res": "L",
       "r": -1.045,
       "ts": 1795337387216
+    },
+    "ZAMAUSDT|SHORT|1795165110381": {
+      "sym": "ZAMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1795351932519
+    },
+    "ARIAUSDT|LONG|1795207936555": {
+      "sym": "ARIAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.935,
+      "ts": 1795351932519
+    },
+    "PROMUSDT|SHORT|1795250980137": {
+      "sym": "PROMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.024,
+      "ts": 1795351932519
+    },
+    "SUIUSDT|SHORT|1795265624693": {
+      "sym": "SUIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.045,
+      "ts": 1795351932519
+    },
+    "FILUSDT|SHORT|1795265624693": {
+      "sym": "FILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1795351932519
+    },
+    "ICPUSDT|SHORT|1795265624693": {
+      "sym": "ICPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.06,
+      "ts": 1795351932519
+    },
+    "ETHUSDT|SHORT|1795265624693": {
+      "sym": "ETHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.813,
+      "ts": 1795351932519
+    },
+    "STXUSDT|SHORT|1795279567518": {
+      "sym": "STXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795351932519
+    },
+    "BRUSDT|SHORT|1795279567518": {
+      "sym": "BRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.028,
+      "ts": 1795351932519
+    },
+    "ENSOUSDT|LONG|1795293787154": {
+      "sym": "ENSOUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.902,
+      "ts": 1795351932519
+    },
+    "KERNELUSDT|LONG|1795306664876": {
+      "sym": "KERNELUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1795351932519
+    },
+    "LINKUSDT|SHORT|1795309207520": {
+      "sym": "LINKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.053,
+      "ts": 1795351932519
+    },
+    "MAGMAUSDT|SHORT|1795309207520": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1795351932519
+    },
+    "TIAUSDT|SHORT|1795337383086": {
+      "sym": "TIAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1795351932519
+    },
+    "ADAUSDT|SHORT|1795337383086": {
+      "sym": "ADAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.053,
+      "ts": 1795351932519
+    },
+    "NEARUSDT|SHORT|1795337383086": {
+      "sym": "NEARUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795351932519
+    },
+    "OPUSDT|SHORT|1795337383086": {
+      "sym": "OPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1795351932519
+    },
+    "ENAUSDT|SHORT|1795337383086": {
+      "sym": "ENAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795351932519
+    },
+    "OUSDT|LONG|1795337383086": {
+      "sym": "OUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.033,
+      "ts": 1795351932519
+    },
+    "STRKUSDT|SHORT|1795337383086": {
+      "sym": "STRKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795351932519
+    },
+    "WLDUSDT|SHORT|1795337383086": {
+      "sym": "WLDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.045,
+      "ts": 1795351932519
+    },
+    "PARTIUSDT|SHORT|1795337383086": {
+      "sym": "PARTIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795351932519
+    },
+    "BTCUSDT|SHORT|1795337383086": {
+      "sym": "BTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.061,
+      "ts": 1795351932519
+    },
+    "HUSDT|SHORT|1795337383086": {
+      "sym": "HUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1795351932519
+    },
+    "CRVUSDT|SHORT|1795337383086": {
+      "sym": "CRVUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795351932519
+    },
+    "ONDOUSDT|SHORT|1795337383086": {
+      "sym": "ONDOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1795351932519
+    },
+    "ETCUSDT|SHORT|1795337383086": {
+      "sym": "ETCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.058,
+      "ts": 1795351932519
+    },
+    "BNBUSDT|SHORT|1795337383086": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.063,
+      "ts": 1795351932519
+    },
+    "JTOUSDT|SHORT|1795337383086": {
+      "sym": "JTOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795351932519
     }
   },
-  "updated_at": "2026-11-22 11:49",
+  "updated_at": "2026-11-22 15:52",
   "breakevens": 0
 }
