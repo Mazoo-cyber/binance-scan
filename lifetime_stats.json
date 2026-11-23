@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 355,
-  "losses": 544,
-  "net_r": 204.497,
+  "losses": 549,
+  "net_r": 199.295,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7146,8 +7146,48 @@
       "res": "L",
       "r": -1.031,
       "ts": 1795453368872
+    },
+    "AINUSDT|SHORT|1795453365106": {
+      "sym": "AINUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.026,
+      "ts": 1795467293040
+    },
+    "NEARUSDT|LONG|1795453365106": {
+      "sym": "NEARUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795467293040
+    },
+    "DOGEUSDT|LONG|1795453365106": {
+      "sym": "DOGEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.055,
+      "ts": 1795467293040
+    },
+    "HYPEUSDT|LONG|1795453365106": {
+      "sym": "HYPEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.047,
+      "ts": 1795467293040
+    },
+    "USELESSUSDT|LONG|1795453365106": {
+      "sym": "USELESSUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.032,
+      "ts": 1795467293040
     }
   },
-  "updated_at": "2026-11-23 20:02",
+  "updated_at": "2026-11-23 23:54",
   "breakevens": 0
 }
