@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 346,
-  "losses": 460,
-  "net_r": 274.354,
+  "losses": 477,
+  "net_r": 256.407,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6402,8 +6402,144 @@
       "res": "L",
       "r": -1.129,
       "ts": 1795393462979
+    },
+    "XAIUSDT|SHORT|1795207936555": {
+      "sym": "XAIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.04,
+      "ts": 1795425673763
+    },
+    "CHIPUSDT|SHORT|1795265624693": {
+      "sym": "CHIPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795425673763
+    },
+    "ASTERUSDT|SHORT|1795337383086": {
+      "sym": "ASTERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.049,
+      "ts": 1795425673763
+    },
+    "PAXGUSDT|SHORT|1795337383086": {
+      "sym": "PAXGUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.126,
+      "ts": 1795425673763
+    },
+    "BEAMXUSDT|SHORT|1795337383086": {
+      "sym": "BEAMXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795425673763
+    },
+    "FARTCOINUSDT|SHORT|1795337383086": {
+      "sym": "FARTCOINUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.045,
+      "ts": 1795425673763
+    },
+    "ETHUSDT|SHORT|1795351928349": {
+      "sym": "ETHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.055,
+      "ts": 1795425673763
+    },
+    "ZROUSDT|SHORT|1795351928349": {
+      "sym": "ZROUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.039,
+      "ts": 1795425673763
+    },
+    "QNTUSDT|SHORT|1795351928349": {
+      "sym": "QNTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795425673763
+    },
+    "BTCUSDT|SHORT|1795351928349": {
+      "sym": "BTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.06,
+      "ts": 1795425673763
+    },
+    "NAORISUSDT|LONG|1795365953974": {
+      "sym": "NAORISUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1795425673763
+    },
+    "JUPUSDT|SHORT|1795365953974": {
+      "sym": "JUPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795425673763
+    },
+    "NEARUSDT|SHORT|1795380357175": {
+      "sym": "NEARUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795425673763
+    },
+    "ONDOUSDT|SHORT|1795380357175": {
+      "sym": "ONDOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.051,
+      "ts": 1795425673763
+    },
+    "XAUTUSDT|SHORT|1795395849295": {
+      "sym": "XAUTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.141,
+      "ts": 1795425673763
+    },
+    "GRAMUSDT|SHORT|1795395849295": {
+      "sym": "GRAMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.057,
+      "ts": 1795425673763
+    },
+    "SUIUSDT|SHORT|1795395849295": {
+      "sym": "SUIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.054,
+      "ts": 1795425673763
     }
   },
-  "updated_at": "2026-11-23 04:04",
+  "updated_at": "2026-11-23 12:21",
   "breakevens": 0
 }
