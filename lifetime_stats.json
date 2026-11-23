@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 346,
-  "losses": 459,
-  "net_r": 275.483,
+  "losses": 460,
+  "net_r": 274.354,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -6394,8 +6394,16 @@
       "res": "L",
       "r": -1.038,
       "ts": 1795380361147
+    },
+    "XAUTUSDT|SHORT|1795337383086": {
+      "sym": "XAUTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.129,
+      "ts": 1795393462979
     }
   },
-  "updated_at": "2026-11-22 23:46",
+  "updated_at": "2026-11-23 03:24",
   "breakevens": 0
 }
