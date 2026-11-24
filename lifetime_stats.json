@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 355,
-  "losses": 549,
-  "net_r": 199.295,
+  "wins": 357,
+  "losses": 552,
+  "net_r": 199.675,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7186,8 +7186,48 @@
       "res": "L",
       "r": -1.032,
       "ts": 1795467293040
+    },
+    "METUSDT|SHORT|1794746984577": {
+      "sym": "METUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.581,
+      "ts": 1795478946304
+    },
+    "TAOUSDT|LONG|1795395849295": {
+      "sym": "TAOUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.875,
+      "ts": 1795478946304
+    },
+    "ZECUSDT|LONG|1795453365106": {
+      "sym": "ZECUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.019,
+      "ts": 1795478946304
+    },
+    "AAVEUSDT|LONG|1795453365106": {
+      "sym": "AAVEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1795478946304
+    },
+    "CYSUSDT|SHORT|1795467288882": {
+      "sym": "CYSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795478946304
     }
   },
-  "updated_at": "2026-11-23 23:54",
+  "updated_at": "2026-11-24 03:09",
   "breakevens": 0
 }
