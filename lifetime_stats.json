@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 367,
-  "losses": 570,
-  "net_r": 203.734,
+  "wins": 370,
+  "losses": 571,
+  "net_r": 207.879,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7450,8 +7450,40 @@
       "res": "L",
       "r": -1.042,
       "ts": 1795526135541
+    },
+    "FILUSDT|SHORT|1795453365106": {
+      "sym": "FILUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.021,
+      "ts": 1795539972914
+    },
+    "ONDOUSDT|SHORT|1795453365106": {
+      "sym": "ONDOUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.289,
+      "ts": 1795539972914
+    },
+    "VVVUSDT|LONG|1795467288882": {
+      "sym": "VVVUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.871,
+      "ts": 1795539972914
+    },
+    "SAHARAUSDT|SHORT|1795526130623": {
+      "sym": "SAHARAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.036,
+      "ts": 1795539972914
     }
   },
-  "updated_at": "2026-11-24 16:15",
+  "updated_at": "2026-11-24 20:06",
   "breakevens": 0
 }
