@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 361,
-  "losses": 565,
-  "net_r": 192.734,
+  "wins": 367,
+  "losses": 570,
+  "net_r": 203.734,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7362,8 +7362,96 @@
       "res": "L",
       "r": -1.046,
       "ts": 1795510796788
+    },
+    "KITEUSDT|LONG|1794849215255": {
+      "sym": "KITEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.454,
+      "ts": 1795526135541
+    },
+    "SHELLUSDT|LONG|1795223065225": {
+      "sym": "SHELLUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.963,
+      "ts": 1795526135541
+    },
+    "ZKPUSDT|SHORT|1795265624693": {
+      "sym": "ZKPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.594,
+      "ts": 1795526135541
+    },
+    "RAREUSDT|LONG|1795380357175": {
+      "sym": "RAREUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1795526135541
+    },
+    "DOSUSDT|SHORT|1795453365106": {
+      "sym": "DOSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 3.786,
+      "ts": 1795526135541
+    },
+    "UNIUSDT|SHORT|1795453365106": {
+      "sym": "UNIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.614,
+      "ts": 1795526135541
+    },
+    "BRUSDT|LONG|1795453365106": {
+      "sym": "BRUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1795526135541
+    },
+    "1000LUNCUSDT|LONG|1795467288882": {
+      "sym": "1000LUNCUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.867,
+      "ts": 1795526135541
+    },
+    "TRXUSDT|LONG|1795467288882": {
+      "sym": "TRXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.164,
+      "ts": 1795526135541
+    },
+    "AVAXUSDT|LONG|1795467288882": {
+      "sym": "AVAXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1795526135541
+    },
+    "LSKUSDT|LONG|1795510791811": {
+      "sym": "LSKUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.042,
+      "ts": 1795526135541
     }
   },
-  "updated_at": "2026-11-24 11:59",
+  "updated_at": "2026-11-24 16:15",
   "breakevens": 0
 }
