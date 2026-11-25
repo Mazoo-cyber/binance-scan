@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 374,
-  "losses": 575,
-  "net_r": 212.386,
+  "wins": 379,
+  "losses": 576,
+  "net_r": 220.039,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7546,8 +7546,56 @@
       "res": "L",
       "r": -1.04,
       "ts": 1795553746805
+    },
+    "SOLUSDT|SHORT|1795467288882": {
+      "sym": "SOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.19,
+      "ts": 1795566724193
+    },
+    "XMRUSDT|SHORT|1795467288882": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.034,
+      "ts": 1795566724193
+    },
+    "XPLUSDT|SHORT|1795467288882": {
+      "sym": "XPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.884,
+      "ts": 1795566724193
+    },
+    "ETHFIUSDT|SHORT|1795467288882": {
+      "sym": "ETHFIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.788,
+      "ts": 1795566724193
+    },
+    "PONSUSDT|SHORT|1795510791811": {
+      "sym": "PONSUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.02,
+      "ts": 1795566724193
+    },
+    "LITUSDT|SHORT|1795526130623": {
+      "sym": "LITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.805,
+      "ts": 1795566724193
     }
   },
-  "updated_at": "2026-11-24 23:55",
+  "updated_at": "2026-11-25 03:32",
   "breakevens": 0
 }
