@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 388,
-  "losses": 580,
-  "net_r": 237.386,
+  "wins": 392,
+  "losses": 584,
+  "net_r": 243.972,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7698,8 +7698,72 @@
       "res": "L",
       "r": -1.032,
       "ts": 1795597347273
+    },
+    "PENDLEUSDT|SHORT|1795467288882": {
+      "sym": "PENDLEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.593,
+      "ts": 1795612850170
+    },
+    "PYTHUSDT|SHORT|1795482268969": {
+      "sym": "PYTHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.808,
+      "ts": 1795612850170
+    },
+    "XRPUSDT|LONG|1795482268969": {
+      "sym": "XRPUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1795612850170
+    },
+    "1000BONKUSDT|SHORT|1795482268969": {
+      "sym": "1000BONKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.897,
+      "ts": 1795612850170
+    },
+    "ARBUSDT|LONG|1795526130623": {
+      "sym": "ARBUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795612850170
+    },
+    "BLURUSDT|LONG|1795569013218": {
+      "sym": "BLURUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.411,
+      "ts": 1795612850170
+    },
+    "MOODENGUSDT|SHORT|1795597343693": {
+      "sym": "MOODENGUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1795612850170
+    },
+    "ARIAUSDT|SHORT|1795597343693": {
+      "sym": "ARIAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.02,
+      "ts": 1795612850170
     }
   },
-  "updated_at": "2026-11-25 12:02",
+  "updated_at": "2026-11-25 16:20",
   "breakevens": 0
 }
