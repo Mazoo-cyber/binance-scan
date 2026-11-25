@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 392,
-  "losses": 584,
-  "net_r": 243.972,
+  "wins": 407,
+  "losses": 586,
+  "net_r": 274.202,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -7762,8 +7762,144 @@
       "res": "L",
       "r": -1.02,
       "ts": 1795612850170
+    },
+    "FLOCKUSDT|SHORT|1795467288882": {
+      "sym": "FLOCKUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.595,
+      "ts": 1795626281571
+    },
+    "ETHUSDT|SHORT|1795467288882": {
+      "sym": "ETHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.592,
+      "ts": 1795626281571
+    },
+    "WLDUSDT|SHORT|1795478941880": {
+      "sym": "WLDUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.249,
+      "ts": 1795626281571
+    },
+    "BCHUSDT|SHORT|1795510791811": {
+      "sym": "BCHUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.726,
+      "ts": 1795626281571
+    },
+    "XRPUSDT|SHORT|1795510791811": {
+      "sym": "XRPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.754,
+      "ts": 1795626281571
+    },
+    "BNBUSDT|SHORT|1795510791811": {
+      "sym": "BNBUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.726,
+      "ts": 1795626281571
+    },
+    "BTCUSDT|SHORT|1795510791811": {
+      "sym": "BTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.655,
+      "ts": 1795626281571
+    },
+    "ATOMUSDT|SHORT|1795526130623": {
+      "sym": "ATOMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.229,
+      "ts": 1795626281571
+    },
+    "AAVEUSDT|SHORT|1795526130623": {
+      "sym": "AAVEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.153,
+      "ts": 1795626281571
+    },
+    "QNTUSDT|SHORT|1795553743482": {
+      "sym": "QNTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.791,
+      "ts": 1795626281571
+    },
+    "ETCUSDT|SHORT|1795553743482": {
+      "sym": "ETCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.962,
+      "ts": 1795626281571
+    },
+    "ZECUSDT|SHORT|1795553743482": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.952,
+      "ts": 1795626281571
+    },
+    "PAXGUSDT|SHORT|1795553743482": {
+      "sym": "PAXGUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.537,
+      "ts": 1795626281571
+    },
+    "XAUTUSDT|SHORT|1795553743482": {
+      "sym": "XAUTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.459,
+      "ts": 1795626281571
+    },
+    "TRXUSDT|SHORT|1795569013218": {
+      "sym": "TRXUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TP3",
+      "res": "W",
+      "r": 2.894,
+      "ts": 1795626281571
+    },
+    "RPLUSDT|SHORT|1795569013218": {
+      "sym": "RPLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.025,
+      "ts": 1795626281571
+    },
+    "1000PEPEUSDT|LONG|1795597343693": {
+      "sym": "1000PEPEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.019,
+      "ts": 1795626281571
     }
   },
-  "updated_at": "2026-11-25 16:20",
+  "updated_at": "2026-11-25 20:04",
   "breakevens": 0
 }
