@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 440,
-  "losses": 637,
-  "net_r": 271.194,
+  "wins": 443,
+  "losses": 645,
+  "net_r": 268.263,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -8570,8 +8570,96 @@
       "res": "L",
       "r": -1.046,
       "ts": 1795699147905
+    },
+    "ZECUSDT|LONG|1795612847900": {
+      "sym": "ZECUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.823,
+      "ts": 1795712971945
+    },
+    "AAVEUSDT|LONG|1795640307067": {
+      "sym": "AAVEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.048,
+      "ts": 1795712971945
+    },
+    "GALAUSDT|SHORT|1795640307067": {
+      "sym": "GALAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.051,
+      "ts": 1795712971945
+    },
+    "APTUSDT|SHORT|1795640307067": {
+      "sym": "APTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.035,
+      "ts": 1795712971945
+    },
+    "ZECUSDT|SHORT|1795655410609": {
+      "sym": "ZECUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.894,
+      "ts": 1795712971945
+    },
+    "VVVUSDT|LONG|1795683614337": {
+      "sym": "VVVUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.03,
+      "ts": 1795712971945
+    },
+    "RENDERUSDT|SHORT|1795683614337": {
+      "sym": "RENDERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.052,
+      "ts": 1795712971945
+    },
+    "MAGMAUSDT|SHORT|1795699144572": {
+      "sym": "MAGMAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.031,
+      "ts": 1795712971945
+    },
+    "LAYERUSDT|SHORT|1795699144572": {
+      "sym": "LAYERUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.038,
+      "ts": 1795712971945
+    },
+    "INITUSDT|SHORT|1795699144572": {
+      "sym": "INITUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.036,
+      "ts": 1795712971945
+    },
+    "XMRUSDT|SHORT|1795699144572": {
+      "sym": "XMRUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.673,
+      "ts": 1795712971945
     }
   },
-  "updated_at": "2026-11-26 16:19",
+  "updated_at": "2026-11-26 20:09",
   "breakevens": 0
 }
