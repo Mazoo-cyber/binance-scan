@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 439,
-  "losses": 633,
-  "net_r": 274.473,
+  "wins": 440,
+  "losses": 637,
+  "net_r": 271.194,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -8530,8 +8530,48 @@
       "res": "L",
       "r": -1.034,
       "ts": 1795683617831
+    },
+    "PIPPINUSDT|LONG|1795467288882": {
+      "sym": "PIPPINUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.876,
+      "ts": 1795699147905
+    },
+    "QNTUSDT|SHORT|1795655410609": {
+      "sym": "QNTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.044,
+      "ts": 1795699147905
+    },
+    "DODOXUSDT|LONG|1795683614337": {
+      "sym": "DODOXUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.039,
+      "ts": 1795699147905
+    },
+    "SKYAIUSDT|SHORT|1795683614337": {
+      "sym": "SKYAIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.026,
+      "ts": 1795699147905
+    },
+    "FETUSDT|SHORT|1795683614337": {
+      "sym": "FETUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795699147905
     }
   },
-  "updated_at": "2026-11-26 12:00",
+  "updated_at": "2026-11-26 16:19",
   "breakevens": 0
 }
