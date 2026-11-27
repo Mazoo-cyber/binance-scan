@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 450,
-  "losses": 697,
-  "net_r": 220.162,
+  "wins": 453,
+  "losses": 703,
+  "net_r": 219.838,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -9130,8 +9130,80 @@
       "res": "L",
       "r": -1.058,
       "ts": 1795770029787
+    },
+    "RAYSOLUSDT|SHORT|1795453365106": {
+      "sym": "RAYSOLUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 1.448,
+      "ts": 1795785325377
+    },
+    "1000LUNCUSDT|LONG|1795683614337": {
+      "sym": "1000LUNCUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 1.764,
+      "ts": 1795785325377
+    },
+    "PIEVERSEUSDT|LONG|1795726661976": {
+      "sym": "PIEVERSEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.02,
+      "ts": 1795785325377
+    },
+    "MONUSDT|SHORT|1795742148496": {
+      "sym": "MONUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.028,
+      "ts": 1795785325377
+    },
+    "SYRUPUSDT|SHORT|1795742148496": {
+      "sym": "SYRUPUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.037,
+      "ts": 1795785325377
+    },
+    "GRAMUSDT|SHORT|1795742148496": {
+      "sym": "GRAMUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.046,
+      "ts": 1795785325377
+    },
+    "BTWUSDT|LONG|1795742148496": {
+      "sym": "BTWUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.644,
+      "ts": 1795785325377
+    },
+    "COLLECTUSDT|LONG|1795770026236": {
+      "sym": "COLLECTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.028,
+      "ts": 1795785325377
+    },
+    "AIOTUSDT|LONG|1795770026236": {
+      "sym": "AIOTUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.021,
+      "ts": 1795785325377
     }
   },
-  "updated_at": "2026-11-27 12:00",
+  "updated_at": "2026-11-27 16:15",
   "breakevens": 0
 }
