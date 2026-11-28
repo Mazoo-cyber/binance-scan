@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 465,
+  "wins": 466,
   "losses": 719,
-  "net_r": 224.847,
+  "net_r": 227.021,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -9426,8 +9426,16 @@
       "res": "L",
       "r": -1.02,
       "ts": 1795825975342
+    },
+    "BMTUSDT|SHORT|1795425669070": {
+      "sym": "BMTUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_TRAIL",
+      "res": "W",
+      "r": 2.174,
+      "ts": 1795828211113
     }
   },
-  "updated_at": "2026-11-28 03:32",
+  "updated_at": "2026-11-28 04:10",
   "breakevens": 0
 }
