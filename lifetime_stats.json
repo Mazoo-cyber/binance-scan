@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
-  "wins": 469,
-  "losses": 725,
-  "net_r": 225.945,
+  "wins": 470,
+  "losses": 727,
+  "net_r": 224.57,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -9506,8 +9506,32 @@
       "res": "L",
       "r": -1.021,
       "ts": 1795855773962
+    },
+    "ARIAUSDT|LONG|1795770026236": {
+      "sym": "ARIAUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.026,
+      "ts": 1795870694596
+    },
+    "BCHUSDT|LONG|1795799315507": {
+      "sym": "BCHUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_BE",
+      "res": "W",
+      "r": 0.674,
+      "ts": 1795870694596
+    },
+    "THEUSDT|SHORT|1795855770115": {
+      "sym": "THEUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.023,
+      "ts": 1795870694596
     }
   },
-  "updated_at": "2026-11-28 11:49",
+  "updated_at": "2026-11-28 15:58",
   "breakevens": 0
 }
