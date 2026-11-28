@@ -1,8 +1,8 @@
 {
   "started_at": "2026-11-09 21:30",
   "wins": 465,
-  "losses": 714,
-  "net_r": 230.007,
+  "losses": 719,
+  "net_r": 224.847,
   "counted": {
     "GRASSUSDT|SHORT|1794244025015": {
       "sym": "GRASSUSDT",
@@ -9386,8 +9386,48 @@
       "res": "L",
       "r": -1.052,
       "ts": 1795799319312
+    },
+    "LTCUSDT|SHORT|1795683614337": {
+      "sym": "LTCUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.039,
+      "ts": 1795825975342
+    },
+    "VVVUSDT|LONG|1795726661976": {
+      "sym": "VVVUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1795825975342
+    },
+    "GALAUSDT|SHORT|1795785321925": {
+      "sym": "GALAUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.029,
+      "ts": 1795825975342
+    },
+    "ETHFIUSDT|SHORT|1795799315507": {
+      "sym": "ETHFIUSDT",
+      "side": "SHORT",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.043,
+      "ts": 1795825975342
+    },
+    "PIEVERSEUSDT|LONG|1795813105862": {
+      "sym": "PIEVERSEUSDT",
+      "side": "LONG",
+      "trade_status": "CLOSED_STOP",
+      "res": "L",
+      "r": -1.02,
+      "ts": 1795825975342
     }
   },
-  "updated_at": "2026-11-27 23:58",
+  "updated_at": "2026-11-28 03:32",
   "breakevens": 0
 }
